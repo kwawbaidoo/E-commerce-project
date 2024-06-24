@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import iphone from "../assets/images/Apple_gray_logo 1.png";
 import heroPhone from "../assets/images/heroPhone.png";
 const Hero = () => {
@@ -7,7 +8,7 @@ const Hero = () => {
         <div className="flex flex-col h-[310px]   ">
           <ul className="flex   flex-col pl- pr-2 font-light gap-2  font-poppins text-base">
             <li className="flex items-center justify-between p-1  w-52 hover:bg-customgray  hover:rounded-sm">
-              <a className="flex items-center justify-between  w-52" href="">Electronics  <a href="">
+              <Link to="/category" className="flex items-center justify-between  w-52" href="">Electronics  <a href="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -22,7 +23,7 @@ const Hero = () => {
                     d="m8.25 4.5 7.5 7.5-7.5 7.5"
                   />
                 </svg>
-              </a></a>
+              </a></Link>
               
             </li>
             <li className="flex justify-between w-52 p-1 hover:rounded-sm hover:bg-customgray">

@@ -10,7 +10,6 @@ const Home = () => {
     <div>
       <Hero />
       <Flashsales />
-      <Category />
       <BestSellingMonth />
     </div>
   );

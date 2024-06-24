@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
+import Category from "./components/Category";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login/>}/>
+        <Route path="/category" element={<Category/>} />
       </Routes>
       <Footer />
     </div>
