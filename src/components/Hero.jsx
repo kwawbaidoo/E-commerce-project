@@ -154,9 +154,6 @@ const Hero = () => {
           </div>
         </div>
         
-        <section>
-          <h3>hello</h3>
-        </section>
       </div>
         
     </div>

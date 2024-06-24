@@ -5,10 +5,15 @@ import gamePad from "../assets/images/Gamepadd.png";
 import smartwatch from "../assets/images/SmartWatch.png";
 import headphone from "../assets/images/Headphone.png";
 import smartWatch from "../assets/smart-watch.svg";
+import Hero from "../components/Hero";
 
 const Category = () => {
   return (
-    <section className="flex justify-center items-center">
+    <section className="flex flex-col justify-center items-center ">
+      <div className="w-full">
+      <Hero/>
+
+      </div>
       <div className="flex gap-16 flex-col mt-20 w-full xl:max-w-[1170px] md:max-w-[1170px] lg:max-w-[1170px] ">
         <div className=" flex justify-between items-end">
           <div className=" flex flex-col gap-5 ">
