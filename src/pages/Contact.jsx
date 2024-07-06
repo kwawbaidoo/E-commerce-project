@@ -86,7 +86,7 @@ const Contact = () => {
               <label
                 htmlFor="name"
                 className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                  hasText ? "-top-2  text-xs" : ""
+                  hasText ? "-top-4  text-xs" : ""
                 }`}
               >
                 Your Name<span className="text-red-500">*</span>
@@ -104,7 +104,7 @@ const Contact = () => {
               <label
                 htmlFor="email"
                 className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                  hasEmailText ? "-top-2  text-xs" : ""
+                  hasEmailText ? "-top-4  text-xs" : ""
                 }`}
               >
                 Your Email<span className="text-red-500">*</span>
@@ -122,7 +122,7 @@ const Contact = () => {
               <label
                 htmlFor="phone"
                 className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                  hasPhoneText ? "-top-2  text-xs" : ""
+                  hasPhoneText ? "-top-4  text-xs" : ""
                 }`}
               >
                 Your Phone<span className="text-red-500">*</span>

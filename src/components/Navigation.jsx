@@ -38,10 +38,10 @@ const Navigation = () => {
           </ul>
         </span>
 
-        <div className="flex justify-between w-[347px]">
-          <span className="flex pl w-52 gap-3 justify-center bg-customgray  items-center ">
+        <div className="flex justify-between w-[347px] ">
+          <span className="flex w-52 gap-3 justify-center bg-customgray  items-center ">
             <input
-              className=" w-40  py-2 outline-none bg-customgray  text-xs font-poppins"
+              className=" w-40 m-1 py-1 outline-none bg-customgray text-sm font-poppins rounded-lg"
               type="text"
               placeholder="what are you looking for?"
             />
@@ -51,7 +51,7 @@ const Navigation = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-4"
+              className="size-4 mr-1"
             >
               <path
                 strokeLinecap="round"
@@ -61,7 +61,7 @@ const Navigation = () => {
             </svg>
           </span>
 
-          <div className="flex gap-6 items-center">
+          <div className="flex gap-6 items-center ml-5  ">
             <a className=" p-1 rounded-sm" href="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +94,9 @@ const Navigation = () => {
                 />
               </svg>
             </a>
+            <div id="profileImage" className="w-10 h-10 rounded-full bg-customred flex justify-center items-center text-white font-medium">
+                <span>FK</span>
+            </div>
           </div>
         </div>
       </div>
