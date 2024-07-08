@@ -23,7 +23,7 @@ const About = () => {
     {
       image: richmond,
       name: "Richmond Forkuo Afram",
-      role: "Product Designer",
+      role: "Marketing Manager",
       iconOne: "bxl-twitter",
       iconTwo: "bxl-instagram-alt",
       iconThree: "bxl-linkedin-square",
@@ -44,8 +44,7 @@ const About = () => {
     },
   ];
 
-  //   <i class='bx bx-dollar'></i>
-  //   <i class='bx bx-store-alt' ></i>
+ 
   console.log(data);
 
   const location = useLocation();
@@ -59,21 +58,21 @@ const About = () => {
         </h3>
       </div>
 
-      <div className="flex w-full xl:max-w-[1306px] gap-20 items-center ml-36 border">
+      <div className="flex w-full xl:max-w-[1306px] gap-20 items-center ml-36 ">
         <div className="xl:max-w-[525px] ">
           <div className="flex flex-col gap-10">
-            <h3>Our Story</h3>
+            
             <span>
+            <em className="font-bold">Our Story</em>
               <p>
-                Launced in 2015, Exclusive is South Asia’s premier online
-                shopping makterplace with an active presense in Bangladesh.
+                Launced in 2024, ShopEasy is Ghanaian’s premier online
+                shopping makterplace with an active presense in Winneba.
                 Supported by wide range of tailored marketing, data and service
-                solutions, Exclusive has 10,500 sallers and 300 brands and
-                serves 3 millioons customers across the region.
+                solutions, ShopEasy has 1500 customers across the UEW campus.
               </p>
               <p>
-                Exclusive has more than 1 Million products to offer, growing at
-                a very fast. Exclusive offers a diverse assotment in categories
+              ShopEasy has more than 1 Million products to offer, growing at
+                a very fast. ShopEasy offers a diverse assotment in categories
                 ranging from consumer.
               </p>
             </span>
@@ -81,7 +80,7 @@ const About = () => {
         </div>
 
         <div>
-          <img className="w-[705px] h-[609px]" src={sideimage} alt="" />
+          <img className="w-[505px] h-[409px] shadow-lg shadow-slate-500" src={sideimage} alt="" />
         </div>
       </div>
 

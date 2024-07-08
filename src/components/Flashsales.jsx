@@ -101,8 +101,8 @@ const Flashsales = () => {
          <div className="flex flex-col gap-2 mt-2">
          <p className="font-poppins font-medium text-base">HAVIT HV-G92 Gamepad</p>
           <div className="flex gap-2">
-            <span className="font-poppins font-medium text-base text-customred">$120</span>
-            <span className="line-through font-poppins font-medium text-base text-textgray">$160</span>
+            <span className="font-poppins font-medium text-base text-customred">GHS 120</span>
+            <span className="line-through font-poppins font-medium text-base text-textgray">GHS 160</span>
           </div>
           <span className="flex gap-2 text-textgray">
             <svg
@@ -204,8 +204,8 @@ const Flashsales = () => {
          <div className="flex flex-col gap-2 mt-2">
          <p className="font-poppins font-medium text-base">AK-900 Wired Keyboard</p>
           <div className="flex gap-2">
-            <span className="font-poppins font-medium text-base text-customred">$960</span>
-            <span className="line-through font-poppins font-medium text-base text-textgray">$1160</span>
+            <span className="font-poppins font-medium text-base text-customred">GHS 960</span>
+            <span className="line-through font-poppins font-medium text-base text-textgray">GHS 1160</span>
           </div>
           <span className="flex gap-2 text-textgray">
             <svg
@@ -304,8 +304,8 @@ const Flashsales = () => {
          <div className="flex flex-col gap-2 mt-2">
          <p className="font-poppins font-medium text-base">IPS LCD Gaming Monitor</p>
           <div className="flex gap-2">
-            <span className="font-poppins font-medium text-base text-customred">$370</span>
-            <span className="line-through font-poppins font-medium text-base text-textgray">$400</span>
+            <span className="font-poppins font-medium text-base text-customred">GHS 370</span>
+            <span className="line-through font-poppins font-medium text-base text-textgray">GHS 400</span>
           </div>
           <span className="flex gap-2 text-textgray">
             <svg
@@ -404,8 +404,8 @@ const Flashsales = () => {
          <div className="flex flex-col gap-2 mt-2">
          <p className="font-poppins font-medium text-base">S-Series Comfort Chair </p>
           <div className="flex gap-2">
-            <span className="font-poppins font-medium text-base text-customred">$375</span>
-            <span className="line-through font-poppins font-medium text-base text-textgray">$400</span>
+            <span className="font-poppins font-medium text-base text-customred">GHS 375</span>
+            <span className="line-through font-poppins font-medium text-base text-textgray">GHS 400</span>
           </div>
           <span className="flex gap-2 text-textgray">
             <svg
@@ -504,8 +504,8 @@ const Flashsales = () => {
          <div className="flex flex-col gap-2 mt-2">
          <p className="font-poppins font-medium text-base">S-Series Comfort Chair</p>
           <div className="flex gap-2">
-            <span className="font-poppins font-medium text-base text-customred">$375</span>
-            <span className="line-through font-poppins font-medium text-base text-textgray">$400</span>
+            <span className="font-poppins font-medium text-base text-customred">GHS 375</span>
+            <span className="line-through font-poppins font-medium text-base text-textgray">GHS 400</span>
           </div>
           <span className="flex gap-2">
             <svg

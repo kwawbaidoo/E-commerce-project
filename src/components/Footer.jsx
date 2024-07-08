@@ -5,6 +5,8 @@ import iconInstagram from "../assets/icons/icon-instagram.png";
 import IconLinkedin from "../assets/icons/Icon-Linkedin.png";
 import IconTwitter from "../assets/icons/Icon-Twitter.png";
 import Qrcode from "../assets/icons/Qrcode.png";
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
 
 const Footer = () => {
   return (
@@ -41,16 +43,16 @@ const Footer = () => {
         <div className="flex flex-col w-[175px] gap-4 text-white ">
             <h3 className="font-poppins text-xl font-semibold">Support</h3>
             <span className="flex flex-col gap-4 font-poppins font-light text-base">
-                <h3>111 Bijoy sarani, Dhaka,  DH 1515, Bangladesh.</h3>
-                <h3>exclusive@gmail.com</h3>
-                <h3>+88015-88888-9999</h3>
+                <h3>Behind GBC - Winneba,  Lancaster street</h3>
+                <h3>shopeasy@gmail.com</h3>
+                <h3>+233 201 236 413</h3>
             </span>
         </div>
         <div className="flex flex-col w-[130px] gap-6 text-white ">
             <h3 className="font-poppins text-xl font-semibold">Account</h3>
             <span className="flex flex-col gap-4 font-poppins font-light text-base">
                 <h3>My Account</h3>
-                <h3>Login / Register</h3>
+                <h3><a href="Login">Login</a> / <a href="Signup">Register</a></h3>
                 <h3>Cart</h3>
                 <h3>Wishlist</h3>
                 <h3>Shop</h3>

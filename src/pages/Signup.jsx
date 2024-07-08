@@ -136,7 +136,7 @@ const Signup = () => {
                   onChange={(e) => setEmailHasText(e.target.value !== "")}
                 />
                 <span className="hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                  Enter valid email
+                  Enter valid email <span className="text-gray-400">(e.g: 1234@gmail.com)</span>
                 </span>
               </div>
             </span>
@@ -169,7 +169,7 @@ const Signup = () => {
                 <label
                   htmlFor="phone"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasAddress ? "-top-4  text-xs" : ""
+                    hasAddress ? "-top-3  text-xs" : ""
                   }`}
                 >
                   Address (P.O.Box 25, Winneba)

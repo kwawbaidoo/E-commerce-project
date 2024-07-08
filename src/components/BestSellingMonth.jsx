@@ -68,10 +68,10 @@ const BestSellingMonth = () => {
               </p>
               <div className="flex gap-2">
                 <span className="font-poppins font-medium text-base text-customred">
-                  $260
+                  GHS 260
                 </span>
                 <span className="line-through font-poppins font-medium text-base text-textgray">
-                  $360
+                  GHS 360
                 </span>
               </div>
               <span className="flex gap-2 text-textgray">
@@ -167,10 +167,10 @@ const BestSellingMonth = () => {
               </p>
               <div className="flex gap-2">
                 <span className="font-poppins font-medium text-base text-customred">
-                  $260
+                  GHS 260
                 </span>
                 <span className="line-through font-poppins font-medium text-base text-textgray">
-                  $360
+                  GHS 360
                 </span>
               </div>
               <span className="flex gap-2 text-textgray">
@@ -266,10 +266,10 @@ const BestSellingMonth = () => {
               </p>
               <div className="flex gap-2">
                 <span className="font-poppins font-medium text-base text-customred">
-                  $160
+                  GHS 160
                 </span>
                 <span className="line-through font-poppins font-medium text-base text-textgray">
-                  $170
+                  GHS 170
                 </span>
               </div>
               <span className="flex gap-2 text-textgray">
@@ -365,10 +365,10 @@ const BestSellingMonth = () => {
               </p>
               <div className="flex gap-2">
                 <span className="font-poppins font-medium text-base text-customred">
-                  $360
+                  GHS 360
                 </span>
                 <span className="hidden line-through font-poppins font-medium text-base text-textgray">
-                  $400
+                  GHS 400
                 </span>
               </div>
               <span className="flex gap-2 text-textgray">
@@ -560,7 +560,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $100
+                    GHS 100
                   </h3>
                   <span className="flex">
                     <svg
@@ -664,7 +664,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $100
+                    GHS 100
                   </h3>
                   <span className="flex">
                     <svg
@@ -761,7 +761,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $700
+                    GHS 700
                   </h3>
                   <span className="flex">
                     <svg
@@ -857,7 +857,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $500
+                    GHS 500
                   </h3>
                   <span className="flex">
                     <svg
@@ -963,7 +963,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $960
+                    GHS 960
                   </h3>
                   <span className="flex">
                     <svg
@@ -1065,7 +1065,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $1160
+                    GHS 1160
                   </h3>
                   <span className="flex">
                     <svg
@@ -1170,7 +1170,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $660
+                    GHS 660
                   </h3>
                   <span className="flex">
                     <svg
@@ -1272,7 +1272,7 @@ const BestSellingMonth = () => {
                 </h3>
                 <span className="flex gap-2">
                   <h3 className="font-poppins font-medium text-base text-customred">
-                    $660
+                    GHS 660
                   </h3>
                   <span className="flex">
                     <svg
@@ -1467,7 +1467,7 @@ const BestSellingMonth = () => {
                 </span>
                 <div className="flex flex-col gap-2 items-center justify-center">
                     <h3 className="font-poppins font-semibold text-xl">FREE AND FAST DELIVERY</h3>
-                    <h3 className="font-poppins font-normal text-sm">Free delivery for all orders over $140</h3>
+                    <h3 className="font-poppins font-normal text-xs">Free delivery for all orders over GHS 140</h3>
                 </div>
             </div>
             <div className="flex items-center justify-center flex-col gap-6">
@@ -1478,7 +1478,7 @@ const BestSellingMonth = () => {
                 </span>
                 <div className="flex flex-col gap-2 items-center justify-center">
                     <h3 className="font-poppins font-semibold text-xl">24/7 CUSTOMER SERVICE</h3>
-                    <h3 className="font-poppins font-normal text-sm">Friendly 24/7 customer support</h3>
+                    <h3 className="font-poppins font-normal text-xs">Friendly 24/7 customer support</h3>
                 </div>
             </div>
             <div className="flex items-center justify-center flex-col gap-6 ">
@@ -1489,7 +1489,7 @@ const BestSellingMonth = () => {
                 </span>
                 <div className="flex flex-col items-center justify-center gap-2">
                     <h3 className="font-poppins font-semibold text-xl">MONEY BACK GUARANTEE</h3>
-                    <h3 className="font-poppins font-normal text-sm">We reurn money within 30 days</h3>
+                    <h3 className="font-poppins font-normal text-xs">We reurn money within 30 days</h3>
                 </div>
             </div>
 
