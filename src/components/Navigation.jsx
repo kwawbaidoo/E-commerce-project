@@ -6,6 +6,7 @@ import Top from "./Top";
 import Home from "../pages/Home";
 import Products from "../products/Products";
 import { useState, useEffect } from "react";
+import shopEasy from '../assets/images/ShopEasy.png';
 
 const Navigation = () => {
   const [categories, setCategories] = useState([]);
@@ -22,7 +23,7 @@ const Navigation = () => {
       <div className="w-full flex flex-col items-center justify-center p-8">
         <div className="flex md:max-w-[1170px] xl:max-w-[1170px]  gap-36 items-center">
           <span className="flex gap-48 w-full xl:max-w-[675px] ">
-            <Link to="/" className="font-inter font-semibold text-2xl text-customred w-40 flex items-center justify-center  bg-white shadow-md rounded-lg">ShopEasy</Link>
+            <Link to="/" className="font-inter font-semibold text-2xl text-customred  flex items-center justify-center bg-white shadow-md rounded-lg"><img className="" src={shopEasy} alt="" /></Link>
 
             <ul className="flex gap-12 font-poppins text-base items-center  w-full">
               <li>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import iphone from "../assets/images/Apple_gray_logo 1.png";
 import heroPhone from "../assets/images/heroPhone.png";
+import ShopEasy from '../assets/images/ShopEasy.png'
 const Hero = () => {
   return (
     <div className="flex flex-col pt-8 items-center justify-center">
@@ -116,8 +117,8 @@ const Hero = () => {
           <div className="flex bg- w-[892px]  justify-between items-center pl-16 pt-10">
             <div className="flex flex-col w-72 gap-5 mb-12  ">
               <span className="flex items-center gap-3">
-                <img className="w-8" src={iphone} alt="" />
-                <span>iPhone 14 Series</span>
+                {/* <img className="w-8" src={iphone} alt="" /> */}
+                {/* <span>iPhone 14 Series</span> */}
               </span>
               <h4 className="font-poppins text-5xl leading-[60px] font-semibold">
                 Up to 10% off Voucher
@@ -140,7 +141,7 @@ const Hero = () => {
                 </svg>
               </h4>
             </div>
-            <img className=" w-[400px]  mr-10 " src={heroPhone} alt="" />
+            <img className=" w-[400px]  mr-10 rounded-xl" src={ShopEasy} alt="" />
           </div>
           <div className=" bg-back w-full flex items-center justify-center mb- absolute top-[280px] gap-3">
             <a className="w-3 h-3 rounded-full bg-gray-500 hover:bg-customred hover:border hover:border-white" href=""><span ></span></a>
