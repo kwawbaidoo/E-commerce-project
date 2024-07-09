@@ -5,9 +5,13 @@ import Flashsales from "../components/Flashsales";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Navigation from "../components/Navigation";
+import LoadingOverlay from "../components/LoadingOverlay";
 const Home = () => {
   return (
-    <div>
+    <div className="relative">
+      <div>
+        <LoadingOverlay />
+      </div>
       <Hero />
       <Flashsales />
       <BestSellingMonth />

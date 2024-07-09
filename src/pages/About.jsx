@@ -21,7 +21,7 @@ const About = () => {
 
   const team = [
     {
-      image: richmond,
+      image:richmond,
       name: "Richmond Forkuo Afram",
       role: "Marketing Manager",
       iconOne: "bxl-twitter",

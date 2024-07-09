@@ -5,8 +5,8 @@ const Hero = () => {
   return (
     <div className="flex flex-col pt-8 items-center justify-center">
       <div className="flex w-full md:max-w-[1170px] xl:max-w-[1170px] justify-between   relative  ">
-        <div className="flex flex-col h-[310px]   ">
-          <ul className="flex   flex-col pl- pr-2 font-light gap-2  font-poppins text-base">
+        <div className="flex flex-col h-[310px]  justify-center   ">
+          <ul className="flex   flex-col pl- pr-2 font-light gap-2  font-poppins text-base ">
             <li className="flex items-center justify-between p-1  w-52 hover:bg-customgray  hover:rounded-sm">
               <Link to="/category" className="flex items-center justify-between  w-52" href="">Electronics  <a href="">
                 <svg
@@ -105,12 +105,8 @@ const Hero = () => {
               
             </li>
             
-            <li className="w-52 hover:rounded-sm p-1 hover:bg-customgray" >
-              <a href="">Medicine</a>
-            </li>
-            <li className="w-52 hover:rounded-sm p-1 hover:bg-customgray">
-              <a href="">Sports & Outdoor</a>
-            </li>
+            
+           
            
           </ul>
         </div>

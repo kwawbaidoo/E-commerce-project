@@ -4,15 +4,25 @@ import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import Top from "./Top";
 import Home from "../pages/Home";
+import Products from "../products/Products";
+import { useState, useEffect } from "react";
 
 const Navigation = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    // Simulate fetching data from an API
+    setCategories(Products.categories);
+  }, []);
+    
+     
   return (
     <>
       <Top />
       <div className="w-full flex flex-col items-center justify-center p-8">
         <div className="flex md:max-w-[1170px] xl:max-w-[1170px]  gap-36 items-center">
           <span className="flex gap-48 w-full xl:max-w-[675px] ">
-            <a href="" className="font-inter font-semibold text-2xl text-customred w-40 flex items-center justify-center  bg-white shadow-md rounded-lg">ShopEasy</a>
+            <Link to="/" className="font-inter font-semibold text-2xl text-customred w-40 flex items-center justify-center  bg-white shadow-md rounded-lg">ShopEasy</Link>
 
             <ul className="flex gap-12 font-poppins text-base items-center  w-full">
               <li>
