@@ -14,7 +14,7 @@ import view from "../assets/images/view.png";
 export default function OurProducts() {
   return (
     <>
-      <section className="flex gap-[60px] flex-col w-full mt-[71px] md:max-w-[1170px] xl:max-w-[1170px] lg:max-w-[1170px]">
+      <section className="flex gap-[60px] -z-10 flex-col w-full mt-[71px] md:max-w-[1170px] xl:max-w-[1170px] lg:max-w-[1170px]">
         <div className="flex justify-between items-end ">
           <div className="flex flex-col gap-5">
             <span className="flex items-center gap-4 ">

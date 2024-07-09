@@ -7,24 +7,26 @@ import Home from "../pages/Home";
 import Products from "../products/Products";
 import { useState, useEffect } from "react";
 import shopEasy from '../assets/images/ShopEasy.png';
+import AccountDropDown from '../components/AccountDropDown';
 
 const Navigation = () => {
   const [categories, setCategories] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    // Simulate fetching data from an API
-    setCategories(Products.categories);
-  }, []);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+ 
     
      
   return (
-    <>
+    <div className="fixed top-0 left-0 right-0 bg-customgray bg-opacity-">
       <Top />
-      <div className="w-full flex flex-col items-center justify-center p-8">
-        <div className="flex md:max-w-[1170px] xl:max-w-[1170px]  gap-36 items-center">
+      <div className="w-full flex flex-col items-center justify-center p-8 ">
+        <div className="flex md:max-w-[1170px] xl:max-w-[1170px] gap-36 items-center ">
           <span className="flex gap-48 w-full xl:max-w-[675px] ">
-            <Link to="/" className="font-inter font-semibold text-2xl text-customred  flex items-center justify-center bg-white shadow-md rounded-lg"><img className="" src={shopEasy} alt="" /></Link>
-
+            {/* <Link to="/" className="font-inter font-semibold text-2xl text-customred  border w-full flex items-center justify-center bg-white shadow-md rounded-lg"><img className="w-full" src={shopEasy} alt="" /></Link> */}
+              <img className="w-40 shadow-lg" src={shopEasy} alt="" />
             <ul className="flex gap-12 font-poppins text-base items-center  w-full">
               <li>
                 <Link to="/" className="hover:underline">
@@ -52,9 +54,9 @@ const Navigation = () => {
           <div className="flex justify-between w-[347px] ">
             <span className="flex w-52 gap-3 justify-center bg-customgray  items-center ">
               <input
-                className=" w-40 m-1 py-1 outline-none bg-customgray text-sm font-poppins rounded-lg"
+                className=" w-40 m-1 border py-1 outline-none bg-customgray text-xs font-poppins rounded-md p-2"
                 type="text"
-                placeholder="what are you looking for?"
+                placeholder="Search"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,16 +114,18 @@ const Navigation = () => {
               </span>
               <div
                 id="profileImage"
-                className="w-10 h-10 rounded-full bg-customred flex justify-center items-center text-white font-medium"
+                onClick={openModal}
+                className="w-10 h-10 cursor-pointer rounded-full bg-customred flex justify-center items-center text-white font-medium"
               >
-                <span>FK</span>
+                <span>FK </span>
+                <AccountDropDown isOpen={isModalOpen} onClose={closeModal} />
               </div>
             </div>
           </div>
         </div>
-        <hr className=" w-full mt-4" />
+        {/* <hr className=" w-full mt-4" /> */}
       </div>
-    </>
+    </div>
   );
 };
 

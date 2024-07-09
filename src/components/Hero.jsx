@@ -4,7 +4,7 @@ import heroPhone from "../assets/images/heroPhone.png";
 import ShopEasy from '../assets/images/ShopEasy.png'
 const Hero = () => {
   return (
-    <div className="flex flex-col pt-8 items-center justify-center">
+    <div className="flex relative top-40 -z-10 flex-col pt-8 items-center justify-center">
       <div className="flex w-full md:max-w-[1170px] xl:max-w-[1170px] justify-between   relative  ">
         <div className="flex flex-col h-[310px]  justify-center   ">
           <ul className="flex   flex-col pl- pr-2 font-light gap-2  font-poppins text-base ">

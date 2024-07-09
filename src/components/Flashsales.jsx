@@ -6,7 +6,7 @@ import monitor from "../assets/images/screen.png";
 import chair from '../assets/images/chair.png'
 const Flashsales = () => {
   return (
-    <div className="flex justify-center items-center  mt-36">
+    <div className="flex justify-center items-center  mt-72">
       <section className="flex ml-36 flex-col gap-10 justify-center w-full xl:max-w-[1308px] md:max-w-[1308px]  ">
         <div className="flex items-end justify-between xl:max-w-[1170px] md:max-w-[1170px] lg:max-w-[1170px]">
         <div className="flex  xl:max-w-[600px] md:max-w-[600px] justify-between gap-[87px] ">

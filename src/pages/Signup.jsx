@@ -79,6 +79,40 @@ const Signup = () => {
     setConfirmPasswordInput(event.target.value);
   };
 
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Validate passwords
+    if (passwordInput !== confirmPasswordInput) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    // Prepare data to be sent to the backend
+    const formData = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      address: event.target.address.value,
+      password: passwordInput,
+    };
+
+    try {
+      // Make the API call to the backend
+      const response = await axios.post('http://localhost:8000/api/register', formData);
+      console.log(response.data); // Handle the response as needed
+
+      // Redirect or show success message
+      alert("Signup successful!");
+    } catch (error) {
+      console.error(error);
+      // Handle errors appropriately
+      alert("Signup failed. Please try again.");
+    }
+  };
+
+
   return (
     <div className="flex justify-center">
       <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1220px] lg:max-w-[1220px] md:max-w-[1220px] mt-16 rounded-br-3xl">
@@ -94,7 +128,7 @@ const Signup = () => {
               Enter your details below
             </h3>
           </span>
-          <form action="" className="flex gap-8 flex-col group">
+          <form onSubmit={handleSubmit} action="" className="flex gap-8 flex-col group">
             <span className="flex  gap-4">
               <div className="relative w-full">
                 <label
@@ -155,7 +189,7 @@ const Signup = () => {
                   id="phone"
                   className="w-full h-[50px] bg-customgray pl-4 outline-none pt-4 pb-1 peer"
                   type="tel"
-                  placeholder=" "
+                  placeholder=" Placeholder"
                   onChange={(e) => setPhoneHasText(e.target.value !== "")}
                   title="Enter 10 digit telephone number without dashes or dots"
                   pattern="[0-9]{10}"
