@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center">
+    <div className=" flex items-center justify-center mt-48">
       <div className="w-full flex gap-[129px] items-center justify-center  xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16 ">
         <div className="bg-customseablue w-[500px] h-[400px] flex items-end justify-center rounded-bl-3xl rounded-tr-3xl">
           <img src={market} alt="" className="rounded-bl-3xl rounded-tr-3xl" />

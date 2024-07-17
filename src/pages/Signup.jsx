@@ -114,7 +114,7 @@ const Signup = () => {
 
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-60">
       <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1220px] lg:max-w-[1220px] md:max-w-[1220px] mt-16 rounded-br-3xl">
         <div className="bg-customseablue w-[600px] h-[400px] flex items-end justify-center rounded-br-3xl rounded-tl-3xl ">
           <img src={market} alt="" className="rounded-br-3xl" />
@@ -134,7 +134,7 @@ const Signup = () => {
                 <label
                   htmlFor="name"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasText ? "-top-4  text-xs" : ""
+                    hasText ? "-top-5  text-xs" : ""
                   }`}
                 >
                   Name<span className="text-red-500">*</span>
@@ -155,7 +155,7 @@ const Signup = () => {
                 <label
                   htmlFor="email"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasEmailText ? "-top-4  text-xs" : ""
+                    hasEmailText ? "-top-5  text-xs" : ""
                   }`}
                 >
                   Email<span className="text-red-500">*</span>
@@ -179,7 +179,7 @@ const Signup = () => {
                 <label
                   htmlFor="phone"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPhoneText ? "-top-4  text-xs" : ""
+                    hasPhoneText ? "-top-5  text-xs" : ""
                   }`}
                 >
                   Phone<span className="text-red-500">*</span>
@@ -189,7 +189,7 @@ const Signup = () => {
                   id="phone"
                   className="w-full h-[50px] bg-customgray pl-4 outline-none pt-4 pb-1 peer"
                   type="tel"
-                  placeholder=" Placeholder"
+                  placeholder=" "
                   onChange={(e) => setPhoneHasText(e.target.value !== "")}
                   title="Enter 10 digit telephone number without dashes or dots"
                   pattern="[0-9]{10}"
@@ -201,9 +201,9 @@ const Signup = () => {
               </div>
               <div className="relative w-full">
                 <label
-                  htmlFor="phone"
+                  htmlFor="address"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasAddress ? "-top-3  text-xs" : ""
+                    hasAddress ? "-top-5  text-xs" : ""
                   }`}
                 >
                   Address (P.O.Box 25, Winneba)
