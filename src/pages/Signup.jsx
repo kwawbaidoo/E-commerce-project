@@ -4,6 +4,9 @@ import { useState } from "react";
 import market from "../assets/images/marketpng.png";
 import IconGoogle from "../assets/icons/IconGoogle.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 
 const Signup = () => {
   const [hasText, setHasText] = useState(false);
@@ -104,11 +107,11 @@ const Signup = () => {
       console.log(response.data); // Handle the response as needed
 
       // Redirect or show success message
-      alert("Signup successful!");
+      toast.success("Signup successful!");
     } catch (error) {
       console.error(error);
       // Handle errors appropriately
-      alert("Signup failed. Please try again.");
+      toast.error("Signup failed. Please try again.");
     }
   };
 
