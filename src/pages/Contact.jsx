@@ -11,8 +11,8 @@ const Contact = () => {
 
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex flex-col xl:max-w-[1170px] lg:max-w-[1170px] md:max-w-[1170px] gap-20">
+    <div className="flex items-center justify-center bg-black z-50">
+      <div className="flex flex-col xl:max-w-[1170px] lg:max-w-[1170px] md:max-w-[1170px] gap-20 bg-black">
         <div>
           <h3>Home / <span className="text-customred" >{paths}</span></h3>
         </div>

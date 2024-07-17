@@ -8,8 +8,8 @@ import Navigation from "../components/Navigation";
 import LoadingOverlay from "../components/LoadingOverlay";
 const Home = () => {
   return (
-    <div className="relative">
-      <div>
+    <div className="">
+      <div className="relative border bg-black">
         <LoadingOverlay />
       </div>
       <Hero />

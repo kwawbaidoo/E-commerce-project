@@ -12,7 +12,7 @@ const BestSellingMonth = () => {
   return (
     <div className="flex flex-col justify-center items-center  mt-36">
       <BestSelling/>
-      <div className="flex p-16 items-center justify-center gap-6 bg-black w-full xl:max-w-[1170PX] md:max-w-[1170px] lg:max-w-[1170px] mt-36">
+      <div className="flex p-16 -z-10 items-center justify-center gap-6 bg-black w-full xl:max-w-[1170PX] md:max-w-[1170px] lg:max-w-[1170px] mt-36">
         <div className="flex flex-col  xl:max-w-[443px] md:max-w-[443px] lg:max-w-[443px] ">
           <h4 className="font-poppins text-base font-semibold text-customgreen">
             Categories
@@ -56,7 +56,7 @@ const BestSellingMonth = () => {
 
       <OurProducts />
      
-      <section className="flex flex-col gap-[60px]  mt-36 w-full xl:max-w-[1170px] md:max-w-[1170px] lg:max-w-[1170px]">
+      <section className="flex flex-col gap-[60px] -z-10  mt-36 w-full xl:max-w-[1170px] md:max-w-[1170px] lg:max-w-[1170px]">
         <div className="flex flex-col gap-5 ">
           <span className="flex items-center gap-4">
             <span className="w-5 h-10 rounded-md bg-customred"></span>

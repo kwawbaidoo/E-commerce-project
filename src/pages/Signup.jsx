@@ -95,7 +95,11 @@ const Signup = () => {
 
     // Validate passwords
     if (passwordInput !== confirmPasswordInput) {
+<<<<<<< HEAD
       toast.error("Passwords do not match");
+=======
+      alert("Passwords do not match");
+>>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
       return;
     }
 
@@ -112,6 +116,7 @@ const Signup = () => {
       // Make the API call to the backend
       const response = await axios.post('http://localhost:8000/api/register', formData);
       console.log(response.data); // Handle the response as needed
+<<<<<<< HEAD
       nameInput.value = ""
       emailInput.value = ""
       phoneInput.value = ""
@@ -125,6 +130,15 @@ const Signup = () => {
       console.error(error);
       // Handle errors appropriately
       toast.error("Signup failed. Please try again.");
+=======
+
+      // Redirect or show success message
+      alert("Signup successful!");
+    } catch (error) {
+      console.error(error);
+      // Handle errors appropriately
+      alert("Signup failed. Please try again.");
+>>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
     }
   };
 
@@ -205,7 +219,11 @@ const Signup = () => {
                   id="phone"
                   className="w-full h-[50px] bg-customgray pl-4 outline-none pt-4 pb-1 peer"
                   type="tel"
+<<<<<<< HEAD
                   placeholder=""
+=======
+                  placeholder=" Placeholder"
+>>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
                   onChange={(e) => setPhoneHasText(e.target.value !== "")}
                   title="Enter 10 digit telephone number without dashes or dots"
                   pattern="[0-9]{10}"

@@ -10,9 +10,13 @@ import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Category from "./components/Category";
+<<<<<<< HEAD
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./components/UserContext";
+=======
+import ProfileEdit from "./components/ProfileEdit";
+>>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +34,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/category" element={<Category/>} />
+        <Route path="/profileEdit" element={<ProfileEdit/>}/>
       </Routes>
       <Footer />
       </UserProvider>
