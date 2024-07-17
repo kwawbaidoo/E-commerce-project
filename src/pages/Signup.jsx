@@ -4,8 +4,18 @@ import { useState } from "react";
 import market from "../assets/images/marketpng.png";
 import IconGoogle from "../assets/icons/IconGoogle.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
+  let nameInput = document.getElementById("name");
+  let emailInput = document.getElementById("email");
+  let phoneInput = document.getElementById("phone");
+  let addressInput = document.getElementById("address");
+  let paswordInput = document.getElementById("password");
+  let confirmpasswordInput = document.getElementById("confirm_password");
+
   const [hasText, setHasText] = useState(false);
   const [hasEmailText, setEmailHasText] = useState(false);
   const [hasPhoneText, setPhoneHasText] = useState(false);
@@ -79,6 +89,46 @@ const Signup = () => {
     setConfirmPasswordInput(event.target.value);
   };
 
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Validate passwords
+    if (passwordInput !== confirmPasswordInput) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    // Prepare data to be sent to the backend
+    const formData = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      address: event.target.address.value,
+      password: passwordInput,
+    };
+
+    try {
+      // Make the API call to the backend
+      const response = await axios.post('http://localhost:8000/api/register', formData);
+      console.log(response.data); // Handle the response as needed
+      nameInput.value = ""
+      emailInput.value = ""
+      phoneInput.value = ""
+      paswordInput.value = ""
+      confirmpasswordInput.value = ""
+      addressInput.value = "" ;
+
+      // Redirect or show success message
+      toast.success("Signup successful!");
+    } catch (error) {
+      console.error(error);
+      // Handle errors appropriately
+      toast.error("Signup failed. Please try again.");
+    }
+  };
+
+
   return (
     <div className="flex justify-center">
       <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1220px] lg:max-w-[1220px] md:max-w-[1220px] mt-16 rounded-br-3xl">
@@ -94,13 +144,13 @@ const Signup = () => {
               Enter your details below
             </h3>
           </span>
-          <form action="" className="flex gap-8 flex-col group">
+          <form onSubmit={handleSubmit} action="" className="flex gap-8 flex-col group">
             <span className="flex  gap-4">
               <div className="relative w-full">
                 <label
                   htmlFor="name"
-                  className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasText ? "-top-4  text-xs" : ""
+                  className={`absolute top-6 left-4 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
+                    hasText ? "-top-[15px]  text-xs" : ""
                   }`}
                 >
                   Name<span className="text-red-500">*</span>
@@ -121,7 +171,7 @@ const Signup = () => {
                 <label
                   htmlFor="email"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasEmailText ? "-top-4  text-xs" : ""
+                    hasEmailText ? "-top-[15px]  text-xs" : ""
                   }`}
                 >
                   Email<span className="text-red-500">*</span>
@@ -132,7 +182,7 @@ const Signup = () => {
                   className="w-full h-[50px] bg-customgray pl-4 outline-none pt-4 pb-1 peer"
                   type="email"
                   placeholder=" "
-                  pattern="[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   onChange={(e) => setEmailHasText(e.target.value !== "")}
                 />
                 <span className="hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
@@ -145,7 +195,7 @@ const Signup = () => {
                 <label
                   htmlFor="phone"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPhoneText ? "-top-4  text-xs" : ""
+                    hasPhoneText ? "-top-[15px]  text-xs" : ""
                   }`}
                 >
                   Phone<span className="text-red-500">*</span>
@@ -155,7 +205,7 @@ const Signup = () => {
                   id="phone"
                   className="w-full h-[50px] bg-customgray pl-4 outline-none pt-4 pb-1 peer"
                   type="tel"
-                  placeholder=" "
+                  placeholder=""
                   onChange={(e) => setPhoneHasText(e.target.value !== "")}
                   title="Enter 10 digit telephone number without dashes or dots"
                   pattern="[0-9]{10}"
@@ -167,9 +217,9 @@ const Signup = () => {
               </div>
               <div className="relative w-full">
                 <label
-                  htmlFor="phone"
+                  htmlFor="address"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasAddress ? "-top-3  text-xs" : ""
+                    hasAddress ? "-top-[15px]  text-xs" : ""
                   }`}
                 >
                   Address (P.O.Box 25, Winneba)
@@ -191,9 +241,9 @@ const Signup = () => {
             <span className="flex gap-4">
               <div className="relative w-full">
                 <label
-                  htmlFor="phone"
+                  htmlFor="password"
                   className={`absolute left-4 top-0 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPassword ? "-top-4  text-xs" : ""
+                    hasPassword ? "-top-[15px]  text-xs" : ""
                   }`}
                 >
                   Password<span className="text-red-500">*</span>

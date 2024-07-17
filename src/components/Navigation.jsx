@@ -1,14 +1,18 @@
 import heart from "../assets/images/heart.png";
 import cart from "../assets/images/Cart1.png";
-import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import Top from "./Top";
 import Home from "../pages/Home";
 import Products from "../products/Products";
 import { useState, useEffect } from "react";
+import { UserContext } from "./UserContext";
+import React, { useContext } from "react";
+
 
 const Navigation = () => {
   const [categories, setCategories] = useState([]);
+  const { userInitials } = useContext(UserContext);
+
 
   useEffect(() => {
     // Simulate fetching data from an API
@@ -43,6 +47,11 @@ const Navigation = () => {
               <li className="w-20 ">
                 <Link to="/signup" className="hover:underline  ">
                   Sign Up
+                </Link>
+              </li>
+              <li className="w-20 ">
+                <Link to="/login" className="hover:underline  ">
+                  Login
                 </Link>
               </li>
             </ul>
@@ -111,9 +120,9 @@ const Navigation = () => {
               </span>
               <div
                 id="profileImage"
-                className="w-10 h-10 rounded-full bg-customred flex justify-center items-center text-white font-medium"
+                className="w-10 h-10 rounded-full bg-customred hidden justify-center items-center text-white font-medium"
               >
-                <span>FK</span>
+                <span id="nameInitial">{userInitials}</span>
               </div>
             </div>
           </div>

@@ -10,12 +10,18 @@ import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Category from "./components/Category";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { UserProvider } from "./components/UserContext";
 
 function App() {
   const [count, setCount] = useState(0);
 
+
   return (
     <div>
+      <UserProvider>
+      <ToastContainer/>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -26,6 +32,7 @@ function App() {
         <Route path="/category" element={<Category/>} />
       </Routes>
       <Footer />
+      </UserProvider>
     </div>
   );
 }
