@@ -1,6 +1,6 @@
 import { json, Link, useNavigate } from "react-router-dom";
 import market from "../assets/images/marketpng.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from "../api";
@@ -12,8 +12,16 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const profileImage = document.getElementById("profileImage");
+  const signUp = document.getElementById("signUp");
  let  User_Initials = document.getElementById("userInitials");
   const [userInitials, setUserInitials] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      //navigate("/"); 
+    }
+  }, [navigate]);
 
 
   const handleToggleClick = () => {
@@ -64,8 +72,9 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", response.data.user.name);
       profileImage.style.display="flex";
-      toast.success("login sucessfull");
+      toast.success("Login sucessfull");
       navigate("/"); // Redirect to a protected route
+      signUp.style.display="none";
     } catch (error) {
       toast.error("Invalid email or password");
     }
@@ -89,13 +98,8 @@ const Login = () => {
   }
   
   return (
-<<<<<<< HEAD
-    <div className="flex items-center justify-center">
-      <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16">
-=======
     <div className=" flex items-center justify-center mt-48">
       <div className="w-full flex gap-[129px] items-center justify-center  xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16 ">
->>>>>>> b1db28e173be99ec874e3aa77170d00613d9a701
         <div className="bg-customseablue w-[500px] h-[400px] flex items-end justify-center rounded-bl-3xl rounded-tr-3xl">
           <img src={market} alt="" className="rounded-bl-3xl rounded-tr-3xl" />
         </div>

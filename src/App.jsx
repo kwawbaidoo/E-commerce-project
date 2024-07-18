@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import Category from "./components/Category";
 import ProfileEdit from "./components/ProfileEdit";
 import AdminAddProduct from "./components/AddminAddProduct";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +32,7 @@ function App() {
       </Routes>
       <AdminAddProduct/>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
