@@ -89,8 +89,8 @@ const Login = () => {
   }
   
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16">
+    <div className=" flex items-center justify-center mt-48">
+      <div className="w-full flex gap-[129px] items-center justify-center  xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16 ">
         <div className="bg-customseablue w-[500px] h-[400px] flex items-end justify-center rounded-bl-3xl rounded-tr-3xl">
           <img src={market} alt="" className="rounded-bl-3xl rounded-tr-3xl" />
         </div>
@@ -193,7 +193,7 @@ const Login = () => {
             </span>
             {error && <div className="text-red-500">{error}</div>}
             <span className="flex justify-between items-center">
-              <button className="flex hover:bg-red-500 items-center justify-center w-36 bg-blue-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
+              <button className="flex hover:bg-blue-900 items-center justify-center w-36 bg-blue-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30 cursor-pointer">
                 Log in
               </button>
               <h4 className="text-customred font-poppins text-base font-light">
