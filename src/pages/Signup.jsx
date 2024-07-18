@@ -399,7 +399,7 @@ const Signup = () => {
               </div>
             </span>
             <span className="flex flex-col gap-4">
-              <button className="flex w-48 items-center justify-center bg-blue-500 hover:bg-red-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
+              <button className="flex w-48 items-center justify-center bg-blue-500 hover:bg-blue-900 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
                 Create Account
               </button>
             </span>
