@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Category from "./components/Category";
 import ProfileEdit from "./components/ProfileEdit";
+import AdminAddProduct from "./components/AddminAddProduct";
 
 function App() {
   const [count, setCount] = useState(0);

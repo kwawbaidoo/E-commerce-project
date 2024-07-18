@@ -119,7 +119,7 @@ const Signup = () => {
         <div className="bg-customseablue w-[600px] h-[400px] flex items-end justify-center rounded-br-3xl rounded-tl-3xl ">
           <img src={market} alt="" className="rounded-br-3xl" />
         </div>
-        <div className="w-full h-[530px] flex flex-col gap-12 ">
+        <div className="w-full h-[530px] flex flex-col gap-12">
           <span className="flex flex-col gap-6">
             <h3 className="font-inter font-medium text-4xl text-black">
               Create an account
@@ -399,7 +399,7 @@ const Signup = () => {
               </div>
             </span>
             <span className="flex flex-col gap-4">
-              <button className="flex w-48 items-center justify-center bg-blue-500 hover:bg-red-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
+              <button className="flex w-48 items-center justify-center bg-blue-500 hover:bg-blue-900 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
                 Create Account
               </button>
             </span>

@@ -20,7 +20,7 @@ const Navigation = () => {
     
      
   return (
-    <div className="fixed top-0 left-0 right-0 bg-customgray bg-opacity-">
+    <div className="fixed top-0 left-0 right-0 bg-customgray z-50">
       <Top />
       <div className="w-full flex flex-col items-center justify-center p-8 ">
         <div className="flex md:max-w-[1170px] xl:max-w-[1170px] gap-36 items-center ">

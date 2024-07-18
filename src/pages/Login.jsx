@@ -139,7 +139,7 @@ const Login = () => {
               </span>
             </span>
             <span className="flex justify-between items-center">
-              <button className="flex hover:bg-red-500 items-center justify-center w-36 bg-blue-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
+              <button className="flex hover:bg-blue-900 items-center justify-center w-36 bg-blue-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30 cursor-pointer">
                 Log in
               </button>
               <h4 className="text-customred font-poppins text-base font-light">
