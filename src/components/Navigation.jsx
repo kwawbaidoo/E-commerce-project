@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import shopEasy from '../assets/images/ShopEasy.png';
 import AccountDropDown from '../components/AccountDropDown';
 
-const Navigation = () => {
+const Navigation = (props) => {
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -91,7 +91,7 @@ const Navigation = () => {
                   />
                 </svg>
               </a>
-              <span className="flex  relative">
+              <span className="flex relative">
                 <a href="" className="">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -108,8 +108,8 @@ const Navigation = () => {
                     />
                   </svg>
                 </a>
-                <span className="absolute flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
-                  1
+                <span className="absolute cursor-pointer flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
+                  {props.cart.length}
                 </span>
               </span>
               <div

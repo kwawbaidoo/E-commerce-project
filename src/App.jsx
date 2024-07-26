@@ -14,21 +14,23 @@ import ProfileEdit from "./components/ProfileEdit";
 import AdminAddProduct from "./components/AddminAddProduct";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from "./components/Dashboard";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <Navigation />
+
+      {/* <Navigation  /> */}
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About/>} />
+        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/category" element={<Category/>} />
-        <Route path="/profileEdit" element={<ProfileEdit/>}/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/profileEdit" element={<ProfileEdit />} />
       </Routes>
       <Footer />
       <ToastContainer />

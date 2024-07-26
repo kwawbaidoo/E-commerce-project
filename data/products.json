@@ -1,0 +1,505 @@
+{
+    "products": [
+        {
+            "id": 10101,
+            "name": "iPhone 13",
+            "price": 999.99,
+            "brand": "Apple",
+            "description": "Latest Apple iPhone with advanced features.",
+            "imageUrl": "https://m-cdn.phonearena.com/images/phones/82892-940/Apple-iPhone-13.jpg?w=1",
+            "stock_quantity": 300,
+            "category": "Electronics"
+        },
+        {
+            "id": 10102,
+            "name": "Samsung Galaxy S21",
+            "price": 799.99,
+            "brand": "Samsung",
+            "description": "New Samsung Galaxy S21 with powerful camera.",
+            "imageUrl": "https://foxmoviles.com/wp-content/uploads/2023/04/samsung-galaxy-s21-plus-5g-phantom-violet-256gb-and-8gb-ram-sm-g996b.jpeg",
+            "stock_quantity": 250,
+            "category": "Electronics"
+        },
+        {
+            "id": 10103,
+            "name": "Sony WH-1000XM4",
+            "price": 349.99,
+            "brand": "Sony",
+            "description": "Noise-cancelling wireless headphones.",
+            "imageUrl": "https://cdn.mos.cms.futurecdn.net/XZmDQx9hAPGosRMYH46C4-1200-80.jpg",
+            "stock_quantity": 150,
+            "category": "Electronics"
+        },
+        {
+            "id": 10104,
+            "name": "MacBook Pro 14-inch",
+            "price": 1999.99,
+            "brand": "Apple",
+            "description": "Apple MacBook Pro with M1 chip.",
+            "imageUrl": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-spacegray-select-202110_GEO_US?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1633128816000",
+            "stock_quantity": 100,
+            "category": "Computers"
+        },
+        {
+            "id": 10105,
+            "name": "Dell XPS 13",
+            "price": 1299.99,
+            "brand": "Dell",
+            "description": "Dell XPS 13 with Intel i7 processor.",
+            "imageUrl": "https://i.dell.com/sites/csimages/Video_Imagery/all/xps-13-9380-laptop-black.jpg",
+            "stock_quantity": 80,
+            "category": "Computers"
+        },
+        {
+            "id": 10106,
+            "name": "HP Envy 15",
+            "price": 1199.99,
+            "brand": "HP",
+            "description": "HP Envy 15 with NVIDIA GTX 1650.",
+            "imageUrl": "https://www.hp.com/us-en/shop/app/assets/images/product/6ZC17AV_1/center_facing.png?_=1623855131675",
+            "stock_quantity": 60,
+            "category": "Computers"
+        },
+        {
+            "id": 10107,
+            "name": "iPad Pro 12.9-inch",
+            "price": 1099.99,
+            "brand": "Apple",
+            "description": "Apple iPad Pro with Liquid Retina display.",
+            "imageUrl": "https://www.apple.com/newsroom/images/product/ipad/standard/Apple_iPad-Pro-12-9-inch_04052018_big.jpg.large.jpg",
+            "stock_quantity": 200,
+            "category": "Tablets"
+        },
+        {
+            "id": 10108,
+            "name": "Amazon Echo Dot",
+            "price": 49.99,
+            "brand": "Amazon",
+            "description": "Amazon Echo Dot smart speaker with Alexa.",
+            "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61QBK3WjzML._AC_SL1000_.jpg",
+            "stock_quantity": 500,
+            "category": "Smart Home"
+        },
+        {
+            "id": 10109,
+            "name": "Google Nest Hub",
+            "price": 89.99,
+            "brand": "Google",
+            "description": "Google Nest Hub smart display with Google Assistant.",
+            "imageUrl": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6280/6280082_sd.jpg;maxHeight=640;maxWidth=550",
+            "stock_quantity": 300,
+            "category": "Smart Home"
+        },
+        {
+            "id": 10110,
+            "name": "Fitbit Charge 5",
+            "price": 179.99,
+            "brand": "Fitbit",
+            "description": "Advanced fitness and health tracker.",
+            "imageUrl": "https://www.fitbit.com/global/content/dam/fitbit/global/pdp/devices/charge-5/device-1.jpg",
+            "stock_quantity": 400,
+            "category": "Wearables"
+        },
+        {
+            "id": 10111,
+            "name": "GoPro HERO10 Black",
+            "price": 499.99,
+            "brand": "GoPro",
+            "description": "High-performance action camera.",
+            "imageUrl": "https://gopro.com/content/dam/gopro/global/pdp/hero10-black/images/shop/hero10-black-camera-shop-right.jpeg",
+            "stock_quantity": 150,
+            "category": "Cameras"
+        },
+        {
+            "id": 10112,
+            "name": "Canon EOS R5",
+            "price": 3899.99,
+            "brand": "Canon",
+            "description": "Professional mirrorless camera with 8K video.",
+            "imageUrl": "https://m.media-amazon.com/images/I/81oxlZVNnsL._AC_SL1500_.jpg",
+            "stock_quantity": 50,
+            "category": "Cameras"
+        },
+        {
+            "id": 10113,
+            "name": "Sony A7 III",
+            "price": 1999.99,
+            "brand": "Sony",
+            "description": "Full-frame mirrorless camera with 24.2MP sensor.",
+            "imageUrl": "https://www.sony.com/image/bf60458e1c14947be490dbb7393079d6?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
+            "stock_quantity": 70,
+            "category": "Cameras"
+        },
+        {
+            "id": 10114,
+            "name": "Nintendo Switch OLED",
+            "price": 349.99,
+            "brand": "Nintendo",
+            "description": "New Nintendo Switch with OLED screen.",
+            "imageUrl": "https://m.media-amazon.com/images/I/61MNT9xoBCL._AC_SL1500_.jpg",
+            "stock_quantity": 300,
+            "category": "Gaming"
+        },
+        {
+            "id": 10115,
+            "name": "PlayStation 5",
+            "price": 499.99,
+            "brand": "Sony",
+            "description": "Next-gen PlayStation console with immersive gaming experience.",
+            "imageUrl": "https://media.playstation.com/is/image/SCEA/ps5-playstation-5-console-front-side-product-shot-01-en-15jun20?$1600px$",
+            "stock_quantity": 150,
+            "category": "Gaming"
+        },
+        {
+            "id": 10116,
+            "name": "Xbox Series X",
+            "price": 499.99,
+            "brand": "Microsoft",
+            "description": "Powerful Xbox console with 4K gaming.",
+            "imageUrl": "https://compass-ssl.xbox.com/assets/ff/14/ff14c2ba-6a60-4a19-8bc7-b2acfd1efdd6.jpg?n=Xbox-Series-X_Image-0_XSXS_767x612_03.jpg",
+            "stock_quantity": 150,
+            "category": "Gaming"
+        },
+        {
+            "id": 10117,
+            "name": "Dyson V11 Vacuum",
+            "price": 599.99,
+            "brand": "Dyson",
+            "description": "Powerful cordless vacuum cleaner.",
+            "imageUrl": "https://media.dyson.com/images/6316/pics/en-XY/images/vacuum-cleaners/dyson-v11-torque-drive-large@2x.jpg",
+            "stock_quantity": 100,
+            "category": "Home Appliances"
+        },
+        {
+            "id": 10118,
+            "name": "Instant Pot Duo",
+            "price": 89.99,
+            "brand": "Instant Pot",
+            "description": "7-in-1 electric pressure cooker.",
+            "imageUrl": "https://instantpot.com/wp-content/uploads/2017/10/DUO60.jpg",
+            "stock_quantity": 200,
+            "category": "Home Appliances"
+        },
+        {
+            "id": 10119,
+            "name": "Ninja Air Fryer",
+            "price": 129.99,
+            "brand": "Ninja",
+            "description": "4-quart air fryer for healthy cooking.",
+            "imageUrl": "https://m.media-amazon.com/images/I/81KGz0t5kbL._AC_SL1500_.jpg",
+            "stock_quantity": 150,
+            "category": "Home Appliances"
+        },
+        {
+            "id": 10120,
+            "name": "KitchenAid Stand Mixer",
+            "price": 379.99,
+            "brand": "KitchenAid",
+            "description": "Professional stand mixer with 5-quart bowl.",
+            "imageUrl": "https://m.media-amazon.com/images/I/81aRnznNQQL._AC_SL1500_.jpg",
+            "stock_quantity": 80,
+            "category": "Home Appliances"
+        },
+        {
+            "id": 10121,
+            "name": "Logitech MX Master 3",
+            "price": 99.99,
+            "brand": "Logitech",
+            "description": "Advanced wireless mouse with customizable buttons.",
+            "imageUrl": "https://resource.logitech.com/w_1200,h_630,c_lpad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/mx-master-3/mx-master-3-cad-nav.png?v=1",
+            "stock_quantity": 300,
+            "category": "Computer Accessories"
+        },
+        {
+            "id": 10122,
+            "name": "Razer BlackWidow V3",
+            "price": 139.99,
+            "brand": "Razer",
+            "description": "Mechanical gaming keyboard with RGB lighting.",
+            "imageUrl": "https://assets.razerzone.com/eeimages/products/24565/razer-blackwidow-v3-g_02.png",
+            "stock_quantity": 150,
+            "category": "Computer Accessories"
+        },
+        {
+            "id": 10123,
+            "name": "Bose QuietComfort 35 II",
+            "price": 299.99,
+            "brand": "Bose",
+            "description": "Wireless noise-cancelling headphones.",
+            "imageUrl": "https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc35_ii/qc35ii_black_EC_hero.psd/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+            "stock_quantity": 200,
+            "category": "Audio"
+        },
+        {
+            "id": 10124,
+            "name": "JBL Flip 5",
+            "price": 119.99,
+            "brand": "JBL",
+            "description": "Portable waterproof Bluetooth speaker.",
+            "imageUrl": "https://www.jbl.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw10a7c62c/pdp/JBL_Flip_5_Hero_Black.png",
+            "stock_quantity": 300,
+            "category": "Audio"
+        },
+        {
+            "id": 10125,
+            "name": "Sonos One SL",
+            "price": 179.99,
+            "brand": "Sonos",
+            "description": "Smart speaker for wireless music streaming.",
+            "imageUrl": "https://www.sonos.com/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-sonos-master-catalog/default/dw4a0dbb41/images/products/one-sl/black-34.png?sw=600&sh=600",
+            "stock_quantity": 250,
+            "category": "Audio"
+        },
+        {
+            "id": 10126,
+            "name": "Philips Hue Starter Kit",
+            "price": 199.99,
+            "brand": "Philips",
+            "description": "Smart lighting starter kit with 4 bulbs.",
+            "imageUrl": "https://www.usa.philips.com/c-dam/b2c/lighting-products/hue/v2_us/smart-hue/wave-2/products/starter-kit/1597685791607-coredvphilipshuewhitecolorstarterkit360.jpg",
+            "stock_quantity": 200,
+            "category": "Smart Home"
+        },
+        {
+            "id": 10127,
+            "name": "Ring Video Doorbell 3",
+            "price": 199.99,
+            "brand": "Ring",
+            "description": "Smart video doorbell with motion detection.",
+            "imageUrl": "https://media.allhome.com.ph/catalog/product/cache/4e51b21512a0bb42ed8b2d32207e7ab1/r/i/ring_video_doorbell_3.jpg",
+            "stock_quantity": 150,
+            "category": "Smart Home"
+        },
+        {
+            "id": 10128,
+            "name": "Nest Learning Thermostat",
+            "price": 249.99,
+            "brand": "Google",
+            "description": "Smart thermostat with learning capabilities.",
+            "imageUrl": "https://lh3.googleusercontent.com/Kp4YhPSeiUlBqOzzhA1AhJs1e19gB4wUof79eu5hzVX1ELD1zAGAbvcuUjkRoA0Pdw=w940-rwa",
+            "stock_quantity": 100,
+            "category": "Smart Home"
+        },
+        {
+            "id": 10129,
+            "name": "Roku Ultra",
+            "price": 99.99,
+            "brand": "Roku",
+            "description": "4K streaming media player with voice remote.",
+            "imageUrl": "https://image.roku.com/streaming-devices/ultra/1-hero.png",
+            "stock_quantity": 250,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10130,
+            "name": "Apple TV 4K",
+            "price": 179.99,
+            "brand": "Apple",
+            "description": "4K HDR streaming media player.",
+            "imageUrl": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-tv-4k-select-202104?wid=470&hei=556&fmt=png-alpha&.v=1617761624000",
+            "stock_quantity": 200,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10131,
+            "name": "Fire TV Stick 4K",
+            "price": 49.99,
+            "brand": "Amazon",
+            "description": "4K streaming media stick with Alexa voice remote.",
+            "imageUrl": "https://m.media-amazon.com/images/I/51CgKGfMelL._AC_SL1000_.jpg",
+            "stock_quantity": 500,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10132,
+            "name": "Oculus Quest 2",
+            "price": 299.99,
+            "brand": "Oculus",
+            "description": "All-in-one VR headset.",
+            "imageUrl": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/M/K/MK2L3/MK2L3?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1629803180000",
+            "stock_quantity": 200,
+            "category": "Gaming"
+        },
+        {
+            "id": 10133,
+            "name": "Samsung Galaxy Tab S7",
+            "price": 649.99,
+            "brand": "Samsung",
+            "description": "High-performance Android tablet with S Pen.",
+            "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/ph/sm-t870nznaxme/gallery/ph-galaxy-tab-s7-t870-288760-sm-t870nznaxme-386411367?$720_576_PNG$",
+            "stock_quantity": 150,
+            "category": "Tablets"
+        },
+        {
+            "id": 10134,
+            "name": "Lenovo Tab P11 Pro",
+            "price": 499.99,
+            "brand": "Lenovo",
+            "description": "11.5-inch Android tablet with OLED display.",
+            "imageUrl": "https://www.lenovo.com/medias/lenovo-tablets-tab-p11-pro.png?context=bWFzdGVyfHJvb3R8Mzc3MzF8aW1hZ2UvcG5nfGhlMi9oYmIvMTE1MDM3OTgxNDMyMTQucG5nfGU0MWIwMTYyYzM1NjdlNzg4NDA0ODRlZjczM2I3MmI2NDdkODVkM2Y4YmM4MmM0ZDNmYjk3M2VhNzk4MmU3NmI",
+            "stock_quantity": 100,
+            "category": "Tablets"
+        },
+        {
+            "id": 10135,
+            "name": "DJI Mavic Air 2",
+            "price": 799.99,
+            "brand": "DJI",
+            "description": "Advanced drone with 4K camera.",
+            "imageUrl": "https://m.media-amazon.com/images/I/71l5KbEmuQL._AC_SL1500_.jpg",
+            "stock_quantity": 50,
+            "category": "Drones"
+        },
+        {
+            "id": 10136,
+            "name": "Roku Streaming Stick+",
+            "price": 59.99,
+            "brand": "Roku",
+            "description": "Portable 4K HDR streaming player.",
+            "imageUrl": "https://image.roku.com/streaming-devices/streaming-stick-plus/1-hero.png",
+            "stock_quantity": 300,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10137,
+            "name": "LG CX OLED TV",
+            "price": 1499.99,
+            "brand": "LG",
+            "description": "65-inch 4K OLED Smart TV.",
+            "imageUrl": "https://www.lg.com/us/images/tvs/md06050782/gallery/1100_2_OLED65CXPUA.jpg",
+            "stock_quantity": 50,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10138,
+            "name": "Samsung QN90A Neo QLED TV",
+            "price": 1799.99,
+            "brand": "Samsung",
+            "description": "65-inch 4K Smart TV with Quantum Matrix Technology.",
+            "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/levant/qn65qn90aauxzn/gallery/levant-qled-tv-qn90a-370964-qn65qn90aauxzn-407229626?$720_576_PNG$",
+            "stock_quantity": 50,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10139,
+            "name": "Sony A8H OLED TV",
+            "price": 1699.99,
+            "brand": "Sony",
+            "description": "55-inch 4K OLED Smart TV.",
+            "imageUrl": "https://www.sony.com/image/sonyviewfinder/es-A8H-TV/BRAVIA/OLED/hero_660x660.jpg",
+            "stock_quantity": 60,
+            "category": "Entertainment"
+        },
+        {
+            "id": 10140,
+            "name": "Nikon Z6 II",
+            "price": 1999.99,
+            "brand": "Nikon",
+            "description": "Mirrorless camera with 24.5MP sensor.",
+            "imageUrl": "https://m.media-amazon.com/images/I/81iTi5S4mFL._AC_SL1500_.jpg",
+            "stock_quantity": 50,
+            "category": "Cameras"
+        },
+        {
+            "id": 10141,
+            "name": "Canon EOS M50 Mark II",
+            "price": 699.99,
+            "brand": "Canon",
+            "description": "Compact mirrorless camera with 4K video.",
+            "imageUrl": "https://m.media-amazon.com/images/I/71c8sowG1eL._AC_SL1500_.jpg",
+            "stock_quantity": 100,
+            "category": "Cameras"
+        },
+        {
+            "id": 10142,
+            "name": "Sigma 24-70mm f/2.8 DG DN Art",
+            "price": 1099.99,
+            "brand": "Sigma",
+            "description": "Professional standard zoom lens for Sony E mount.",
+            "imageUrl": "https://m.media-amazon.com/images/I/61fU7V2rRJL._AC_SL1500_.jpg",
+            "stock_quantity": 80,
+            "category": "Camera Accessories"
+        },
+        {
+            "id": 10143,
+            "name": "DJI Ronin-SC",
+            "price": 439.99,
+            "brand": "DJI",
+            "description": "Lightweight and compact gimbal for mirrorless cameras.",
+            "imageUrl": "https://m.media-amazon.com/images/I/51iyfGLkUkL._AC_SL1000_.jpg",
+            "stock_quantity": 100,
+            "category": "Camera Accessories"
+        },
+        {
+            "id": 10144,
+            "name": "Anker PowerCore 26800",
+            "price": 79.99,
+            "brand": "Anker",
+            "description": "High-capacity portable charger with dual USB ports.",
+            "imageUrl": "https://m.media-amazon.com/images/I/71BniHSZxLL._AC_SL1500_.jpg",
+            "stock_quantity": 300,
+            "category": "Accessories"
+        },
+        {
+            "id": 10145,
+            "name": "Belkin BoostCharge 10W Wireless Charger",
+            "price": 29.99,
+            "brand": "Belkin",
+            "description": "Fast wireless charging pad for smartphones.",
+            "imageUrl": "https://www.belkin.com/images/product_assets/252374/pdp_page_assets/BELKIN-WIRELESS-CHARGING-PAD-WHI-BLK-3-psd.png",
+            "stock_quantity": 200,
+            "category": "Accessories"
+        },
+        {
+            "id": 10146,
+            "name": "SanDisk Extreme Pro 1TB SSD",
+            "price": 199.99,
+            "brand": "SanDisk",
+            "description": "Portable external SSD with high-speed transfers.",
+            "imageUrl": "https://m.media-amazon.com/images/I/61AjDqE6vfL._AC_SL1500_.jpg",
+            "stock_quantity": 150,
+            "category": "Storage"
+        },
+        {
+            "id": 10147,
+            "name": "WD My Passport 4TB",
+            "price": 99.99,
+            "brand": "Western Digital",
+            "description": "Portable external hard drive with automatic backup.",
+            "imageUrl": "https://images.wd.com/dam/wdc/products/wd/_images/wd-my-passport-4tb-usb-3.0-hdd-black-angled-500x500.png",
+            "stock_quantity": 200,
+            "category": "Storage"
+        },
+        {
+            "id": 10148,
+            "name": "Seagate Backup Plus Hub 8TB",
+            "price": 179.99,
+            "brand": "Seagate",
+            "description": "Desktop external hard drive with integrated USB hub.",
+            "imageUrl": "https://m.media-amazon.com/images/I/61a3Ub7MXFL._AC_SL1500_.jpg",
+            "stock_quantity": 100,
+            "category": "Storage"
+        },
+        {
+            "id": 10149,
+            "name": "ASUS ROG Strix G15",
+            "price": 1499.99,
+            "brand": "ASUS",
+            "description": "Gaming laptop with AMD Ryzen 9 and NVIDIA RTX 3070.",
+            "imageUrl": "https://www.asus.com/media/global/gallery/tfqx4ks3kqktpeyb_setting_xxx_0_90_end_300.png",
+            "stock_quantity": 80,
+            "category": "Computers"
+        },
+        {
+            "id": 10150,
+            "name": "Acer Predator Helios 300",
+            "price": 1299.99,
+            "brand": "Acer",
+            "description": "Gaming laptop with Intel i7 and NVIDIA GTX 1660 Ti.",
+            "imageUrl": "https://images.acer.com/is/image/acer/Predator-Helios-300-PH315-53-cover-photography-03",
+            "stock_quantity": 100,
+            "category": "Computers"
+        }
+    ]
+    
+}
