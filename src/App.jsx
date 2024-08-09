@@ -35,6 +35,7 @@ function App() {
             <Route path="/checkout" element={<Checkout/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
           </Routes>
+          {/* <AdminAddProduct/> */}
           <Footer />
         </div>
      

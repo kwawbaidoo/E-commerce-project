@@ -6,9 +6,60 @@ import SaleGraph from '../dashboard/Graph';
 import RecentOrders from '../dashboard/RecentOrders';
 import { IconShoppingBag } from '@tabler/icons-react';
 import { IconUsersGroup } from '@tabler/icons-react';
+import Table from '../dashboard/Table';
+import { useState, useEffect } from 'react';
 // import BestSellers from '../dashboard/BestSellers';
 
 const Dashboard = () => {
+  const columns = [
+    {
+        id: 'orderID',
+        name: 'OrderID',
+        selector: row => row.order,
+    },
+    {
+        id: 'productName',
+        name: 'ProductName',
+        selector: row => row.productName,
+    },
+    {
+        id: 'amount',
+        name: 'Amount',
+        selector: row => row.amount,
+    },
+    {
+        id: 'status',
+        name: 'Status',
+        selector: row => row.status,
+    },
+    {
+        id: 'date',
+        name: 'Date',
+        selector: row => row.date,
+    },
+    {
+        id: 'customerName',
+        name: 'CustomerName',
+        selector: row => row.customerName,
+    },
+];
+const [orders, setOrders] = useState([]);
+
+function fetchProducts() {
+  fetch("http://localhost:3020/orders")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setOrders(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+useEffect(() => {
+  fetchProducts();
+}, [orders]);
   return (
     <div className="flex mt-44 flex-col md:flex-row h-screen border bg-gray-100">
       <Sidebar />
@@ -21,7 +72,8 @@ const Dashboard = () => {
           <StatsCard title="Customers" amount="500" comparison="" bgColor="bg-white" icon={<IconUsersGroup size="32" color="#FFFF"/>} />
         </div>
         <SaleGraph />
-        <RecentOrders />
+        {/* <Table columns={columns} data={orders} title="Recent Order"/> */}
+        <RecentOrders/>
         {/* <BestSellers /> */}
       </main>
     </div>
