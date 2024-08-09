@@ -7,8 +7,8 @@ const RecentOrders = () => {
       <table className="w-full">
         <thead>
           <tr>
-            <th>Product</th>
             <th>Order ID</th>
+            <th>Product</th>
             <th>Date</th>
             <th>Customer Name</th>
             <th>Status</th>
@@ -16,9 +16,9 @@ const RecentOrders = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Lorem Ipsum</td>
+          <tr className='border text-center'>
             <td>#25426</td>
+            <td>Lorem Ipsum</td>
             <td>Nov 8th, 2023</td>
             <td>Kavin</td>
             <td>Delivered</td>

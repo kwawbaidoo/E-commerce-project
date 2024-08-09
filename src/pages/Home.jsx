@@ -7,10 +7,13 @@ import Hero from "../components/Hero";
 import Navigation from "../components/Navigation";
 import LoadingOverlay from "../components/LoadingOverlay";
 import ItemCard from "./ItemCard";
+import Cart from "../components/Cart";
+import { useCart } from "../helper/CartContext";
 
 const Home = () => {
+  const {cart, setCart} = useCart();
   const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
 
   function fetchProducts() {
     fetch("http://localhost:3020/products")
@@ -25,8 +28,16 @@ const Home = () => {
   }
 
   function addToCart(product) {
-    console.log(product);
-    setCart((prev) => [...prev, product]);
+    const existingItem = cart.find(cartItem => cartItem.id === product.id);
+    if (existingItem) {
+      setCart(cart.map(cartItem =>
+        cartItem.id === product.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      ));
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   }
 
   useEffect(()=>{
@@ -35,7 +46,6 @@ const Home = () => {
 
   return (
     <div className="">
-      <Navigation cart={cart} />
 
       <div className="relative border bg-black">
         {/* <LoadingOverlay /> */}
@@ -49,7 +59,7 @@ const Home = () => {
             key={key} 
             name={product.name} 
             price={product.price} 
-            image={product.imageUrl} 
+            imageUrl={product?.imageUrl} 
             brand={product.brand}
             addToCart={()=>addToCart(product)}
             />

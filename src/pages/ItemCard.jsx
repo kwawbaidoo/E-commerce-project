@@ -1,16 +1,15 @@
-import keyboard from "../assets/images/keyboard.png";
-import heart from "../assets/images/heart.png";
-import view from "../assets/images/view.png";
+
 
 const ItemCard = ({imageUrl,name,price, addToCart, brand}) => {
+  console.log('Image URL:', imageUrl);
   return (
     <>
       <section className="flex justify-center items-center mt-4">
-        <div className=" flex flex-col w-[300px] h-[280px] hover:shadow-md hover:bg-slate-50 bg-customgray cursor-pointer items-center  justify-evenly rounded-md">
+        <div className=" flex flex-col w-[380px] h-[430px] hover:shadow-md hover:bg-slate-50 bg-customgray cursor-pointer items-center  justify-evenly rounded-md">
           <div className="flex relative align-content-center justify-center   w-full">
             <img
-              className="w-[200px] h-[120px] -ml-5 mt-10  "
-              src={imageUrl}
+              className="w-auto h-60 -ml-5 mt-10"
+              src={imageUrl  || 'path/to/fallback-image.png'}
               alt={name}
             />
             <span className=" flex flex-col gap-2">
