@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AccountDropDown = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -16,15 +19,18 @@ const AccountDropDown = ({ isOpen, onClose }) => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
   const handleLogout = () => {
     localStorage.removeItem('token');
+    toast.success("Logout successfull");
     window.location.href = '/login';
+
   };
 
 
   return (
     <div className="fixed inset-0 bg-transparent bg-opacity-50 flex justify-center items-center z-50 modal-overlay">
-      <div  className="bg-customgray  rounded-lg shadow-lg p-6 w-52 -top-60 left-[500px] relative">
+      <div  className="bg-customgray  rounded-lg shadow-lg p-6 w-52 -top-[73px] left-[460px] relative">
         <button onClick={onClose} className="absolute top-0 right-0 mt-4 mr-4 text-gray-500  modal-overlay">
           &#x2715;
         </button>
