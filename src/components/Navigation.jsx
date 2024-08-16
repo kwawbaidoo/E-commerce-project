@@ -20,7 +20,7 @@ const Navigation = () => {
     
      
   return (
-    <div className="fixed top-0 left-0 right-0 bg-customgray z-50">
+    <div className="fixed z-50 top-0 left-0 right-0 bg-customgray">
       <Top />
       <div className="w-full flex flex-col items-center justify-center p-8 ">
         <div className="flex md:max-w-[1170px] xl:max-w-[1170px] gap-36 items-center ">
@@ -43,7 +43,7 @@ const Navigation = () => {
                   About
                 </Link>
               </li>
-              <li className="w-20 ">
+              <li id="signUp" className="w-20">
                 <Link to="/signup" className="hover:underline  ">
                   Sign Up
                 </Link>
@@ -115,10 +115,10 @@ const Navigation = () => {
               <div
                 id="profileImage"
                 onClick={openModal}
-                className="w-10 h-10 cursor-pointer rounded-full bg-customred flex justify-center items-center text-white font-medium"
+                className="w-10 h-10 cursor-pointer rounded-full bg-customred hidden justify-center items-center text-white font-medium"
               >
-                <span>FK </span>
-                <AccountDropDown isOpen={isModalOpen} onClose={closeModal} />
+                <span id="userInitials"> </span>
+                <AccountDropDown isOpen={isModalOpen} onClose={closeModal}/>
               </div>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import Navigation from "../components/Navigation";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import market from "../assets/images/marketpng.png";
 import IconGoogle from "../assets/icons/IconGoogle.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import api from "../api";
 
 const Signup = () => {
   const [hasText, setHasText] = useState(false);
@@ -12,6 +14,7 @@ const Signup = () => {
   const [hasAddress, setAddressHasText] = useState(false);
   const [hasPassword, setHasPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
@@ -20,56 +23,11 @@ const Signup = () => {
 
   const handleToggleClick = () => {
     setPasswordType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-
-    const hidePasswordElement = document.getElementById('hide_password');
-    const showPasswordElement = document.getElementById('show_password');
-
-    if (passwordType === 'password') {
-      if (showPasswordElement) {
-        showPasswordElement.classList.add('hidden');
-      }
-      if (hidePasswordElement) {
-        hidePasswordElement.classList.remove('hidden');
-        hidePasswordElement.classList.add('flex');
-      }
-    } else {
-      if (hidePasswordElement) {
-        hidePasswordElement.classList.remove('flex');
-        hidePasswordElement.classList.add('hidden');
-      }
-      if (showPasswordElement) {
-        showPasswordElement.classList.remove('hidden');
-        showPasswordElement.classList.add('flex');
-      }
-    }
   };
 
   const handleToggleConfirmPassword = () => {
     setConfirmPasswordType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-
-    const hideConfirmPasswordElement = document.getElementById('hide_confirm_password');
-    const showConfirmPasswordElement = document.getElementById('show_confirm_password');
-
-    if (confirmPasswordType === 'password') {
-      if (showConfirmPasswordElement) {
-        showConfirmPasswordElement.classList.add('hidden');
-      }
-      if (hideConfirmPasswordElement) {
-        hideConfirmPasswordElement.classList.remove('hidden');
-        hideConfirmPasswordElement.classList.add('flex');
-      }
-    } else {
-      if (hideConfirmPasswordElement) {
-        hideConfirmPasswordElement.classList.remove('flex');
-        hideConfirmPasswordElement.classList.add('hidden');
-      }
-      if (showConfirmPasswordElement) {
-        showConfirmPasswordElement.classList.remove('hidden');
-        showConfirmPasswordElement.classList.add('flex');
-      }
-    }
   };
-
 
   const handlePasswordChange = (event) => {
     setPasswordInput(event.target.value);
@@ -79,13 +37,12 @@ const Signup = () => {
     setConfirmPasswordInput(event.target.value);
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validate passwords
     if (passwordInput !== confirmPasswordInput) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
 
@@ -98,20 +55,35 @@ const Signup = () => {
       password: passwordInput,
     };
 
+   
     try {
       // Make the API call to the backend
-      const response = await axios.post('http://localhost:8000/api/register', formData);
+      const response = await api.post('http://localhost:8000/api/register', formData);
       console.log(response.data); // Handle the response as needed
 
       // Redirect or show success message
-      alert("Signup successful!");
+      toast.success("Signup successful!");
+      navigate("/Login"); // Redirect to a protected route
     } catch (error) {
       console.error(error);
       // Handle errors appropriately
-      alert("Signup failed. Please try again.");
+      if (error.response) {
+        // Server responded with a status other than 200 range
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+        toast.error(`Signup failed: ${error.response.data.message}`);
+      } else if (error.request) {
+        // Request was made but no response received
+        console.error("Request data:", error.request);
+        toast.error("Signup failed: No response from server.");
+      } else {
+        // Something else caused the error
+        console.error("Error message:", error.message);
+        toast.error(`Signup failed: ${error.message}`);
+      }
     }
   };
-
 
   return (
     <div className="flex justify-center mt-60">
@@ -134,7 +106,7 @@ const Signup = () => {
                 <label
                   htmlFor="name"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasText ? "-top-5  text-xs" : ""
+                    hasText ? "-top-9  text-xs" : ""
                   }`}
                 >
                   Name<span className="text-red-500">*</span>
@@ -155,7 +127,7 @@ const Signup = () => {
                 <label
                   htmlFor="email"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasEmailText ? "-top-5  text-xs" : ""
+                    hasEmailText ? "-top-9  text-xs" : ""
                   }`}
                 >
                   Email<span className="text-red-500">*</span>
@@ -179,7 +151,7 @@ const Signup = () => {
                 <label
                   htmlFor="phone"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPhoneText ? "-top-5  text-xs" : ""
+                    hasPhoneText ? "-top-9  text-xs" : ""
                   }`}
                 >
                   Phone<span className="text-red-500">*</span>
@@ -203,7 +175,7 @@ const Signup = () => {
                 <label
                   htmlFor="address"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasAddress ? "-top-5  text-xs" : ""
+                    hasAddress ? "-top-9  text-xs" : ""
                   }`}
                 >
                   Address (P.O.Box 25, Winneba)
@@ -227,7 +199,7 @@ const Signup = () => {
                 <label
                   htmlFor="phone"
                   className={`absolute left-4 top-0 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPassword ? "-top-4  text-xs" : ""
+                    hasPassword ? "-top-9  text-xs" : ""
                   }`}
                 >
                   Password<span className="text-red-500">*</span>

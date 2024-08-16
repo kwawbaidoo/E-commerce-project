@@ -1,6 +1,8 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AccountDropDown = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -18,9 +20,17 @@ const AccountDropDown = ({ isOpen, onClose }) => {
     };
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    toast.success("Logout successfull");
+    window.location.href = '/login';
+
+  };
+
+
   return (
     <div className="fixed inset-0 bg-transparent bg-opacity-50 flex justify-center items-center z-50 modal-overlay">
-      <div  className="bg-customgray  rounded-lg shadow-lg p-6 w-52 -top-60 left-[500px] relative">
+      <div  className="bg-customgray  rounded-lg shadow-lg p-6 w-52 -top-[73px] left-[460px] relative">
         <button onClick={onClose} className="absolute top-0 right-0 mt-4 mr-4 text-gray-500  modal-overlay">
           &#x2715;
         </button>
@@ -39,7 +49,7 @@ const AccountDropDown = ({ isOpen, onClose }) => {
                 My Orders</button>
           </li>
           <li className="mb-2 ">
-            <button onClick={onClose} className="text-gray-500 hover:underline flex items-center gap-2">
+            <button onClick={handleLogout} className="text-gray-500 hover:underline flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="#DB4444" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M17.44 14.62L20 12.06 17.44 9.5M9.76 12.06h10.17M11.76 20c-4.42 0-8-3-8-8s3.58-8 8-8"></path></svg>
                 Logout</button>
           </li>
@@ -50,4 +60,3 @@ const AccountDropDown = ({ isOpen, onClose }) => {
 };
 
 export default AccountDropDown;
-
