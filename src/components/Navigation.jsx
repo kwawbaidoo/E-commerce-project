@@ -8,17 +8,15 @@ import Products from "../products/Products";
 import { useState, useEffect } from "react";
 import shopEasy from '../assets/images/ShopEasy.png';
 import AccountDropDown from '../components/AccountDropDown';
+import { useCart } from "../helper/CartContext";
 
 const Navigation = () => {
+  const {cart} = useCart();
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
- 
-    
-     
   return (
     <div className="fixed z-50 top-0 left-0 right-0 bg-customgray">
       <Top />
@@ -27,7 +25,7 @@ const Navigation = () => {
           <span className="flex gap-48 w-full xl:max-w-[675px] ">
             {/* <Link to="/" className="font-inter font-semibold text-2xl text-customred  border w-full flex items-center justify-center bg-white shadow-md rounded-lg"><img className="w-full" src={shopEasy} alt="" /></Link> */}
               <img className="w-40 shadow-lg" src={shopEasy} alt="" />
-            <ul className="flex gap-12 font-poppins text-base items-center  w-full">
+            <ul className="flex gap-8 font-poppins text-base items-center  w-full">
               <li>
                 <Link to="/" className="hover:underline">
                   Home
@@ -43,9 +41,14 @@ const Navigation = () => {
                   About
                 </Link>
               </li>
-              <li id="signUp" className="w-20">
+              <li className="w-16 ">
                 <Link to="/signup" className="hover:underline  ">
                   Sign Up
+                </Link>
+              </li>
+              <li className=" ">
+                <Link to="/dashboard" className="hover:underline  ">
+                  Admin
                 </Link>
               </li>
             </ul>
@@ -91,7 +94,7 @@ const Navigation = () => {
                   />
                 </svg>
               </a>
-              <span className="flex  relative">
+              <Link to="/cart" className="flex relative">
                 <a href="" className="">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -108,10 +111,10 @@ const Navigation = () => {
                     />
                   </svg>
                 </a>
-                <span className="absolute flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
-                  1
+                <span className="absolute cursor-pointer flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
+                {cart ? cart.length : 0}
                 </span>
-              </span>
+              </Link>
               <div
                 id="profileImage"
                 onClick={openModal}
