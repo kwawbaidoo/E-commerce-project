@@ -91,7 +91,7 @@ const Signup = () => {
         <div className="bg-customseablue w-[600px] h-[400px] flex items-end justify-center rounded-br-3xl rounded-tl-3xl ">
           <img src={market} alt="" className="rounded-br-3xl" />
         </div>
-        <div className="w-full h-[530px] flex flex-col gap-12 ">
+        <div className="w-full h-[530px] flex flex-col gap-12">
           <span className="flex flex-col gap-6">
             <h3 className="font-inter font-medium text-4xl text-black">
               Create an account
