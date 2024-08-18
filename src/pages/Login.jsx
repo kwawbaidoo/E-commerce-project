@@ -1,22 +1,28 @@
-import { Link, useNavigate } from "react-router-dom";
+import { json, Link, useNavigate } from "react-router-dom";
 import market from "../assets/images/marketpng.png";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import api from "../api";
 
-
-const Login = ({setUserInitials}) => {
+const Login = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
   const [email, setEmail] = useState("");
-  const profileImage = document.getElementById("profileImage");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const profileImage = document.getElementById("profileImage");
+  const signUp = document.getElementById("signUp");
+ let  User_Initials = document.getElementById("userInitials");
+  const [userInitials, setUserInitials] = useState("");
 
-  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      //navigate("/"); 
+    }
+  }, [navigate]);
+
 
   const handleToggleClick = () => {
     setPasswordType((prevType) =>
@@ -54,49 +60,46 @@ const Login = ({setUserInitials}) => {
     setPasswordInput(event.target.value);
   };
 
+ 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/api/login", {
+      const response = await api.post("http://localhost:8000/api/login", {
         email,
         password: passwordInput,
       });
-      const userData = response.data.user;
-      setUser(userData);
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      toast.success("Login Successfull");
+      localStorage.setItem("user", response.data.user.name);
       profileImage.style.display="flex";
+      toast.success("Login sucessfull");
       navigate("/"); // Redirect to a protected route
-      /*const user = await response.json();
-      const initials = getInitials(user.name);
-      setUserInitials(initials);*/
-
+      signUp.style.display="none";
     } catch (error) {
       toast.error("Invalid email or password");
     }
+ const user_Initials = getUserInitials();
+ User_Initials.innerText= user_Initials;
   };
-  
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    if (token && user) {
-      setIsAuthenticated(true);
-      setUser(JSON.parse(user));
+  function getUserInitials() {
+    const fullName = localStorage.getItem('user');
+    console.log(fullName);
+    if (!fullName) {
+        return ''; 
     }
-  }, []);
-  const getInitials = (name) => {
-    const names = name.split(" ");
-    const initials = names.map((n) => n[0]).join("");
-    return initials.toUpperCase();
-  };
-
-
-
+    const nameParts = fullName.split(' ');;
+    console.log(nameParts);
+  
+    const initials = nameParts.map(word => word.charAt(0).toUpperCase()).join('');
+  
+  return initials;
+    
+  }
+  
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16">
+    <div className=" flex items-center justify-center mt-48">
+      <div className="w-full flex gap-[129px] items-center justify-center  xl:max-w-[1305px] lg:max-w-[1305px] md:max-w-[1305px] mt-16 ">
         <div className="bg-customseablue w-[500px] h-[400px] flex items-end justify-center rounded-bl-3xl rounded-tr-3xl">
           <img src={market} alt="" className="rounded-bl-3xl rounded-tr-3xl" />
         </div>
@@ -199,7 +202,7 @@ const Login = ({setUserInitials}) => {
             </span>
             {error && <div className="text-red-500">{error}</div>}
             <span className="flex justify-between items-center">
-              <button className="flex hover:bg-red-500 items-center justify-center w-36 bg-blue-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
+              <button className="flex hover:bg-blue-900 items-center justify-center w-36 bg-blue-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30 cursor-pointer">
                 Log in
               </button>
               <h4 className="text-customred font-poppins text-base font-light">

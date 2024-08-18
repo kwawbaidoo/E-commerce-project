@@ -10,7 +10,7 @@ import Signup from "../pages/Signup";
 
 const Footer = () => {
   return (
-    <div className="flex bg-customblack px-[135px] py-20 items-center justify-center mt-40">
+    <div className="flex bg-customblack px-[135px] py-20 items-center justify-center mt-16">
       <div className="flex gap-[87px] w-full xl:max-w-[1170px] md:max-w-[1170px] lg:max-w-[1170px]  ">
         <div className="flex flex-col max-w-[217px] gap-4 text-white ">
           <span className="flex flex-col gap-6">
