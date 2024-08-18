@@ -1,12 +1,8 @@
 import Navigation from "../components/Navigation";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import market from "../assets/images/marketpng.png";
 import IconGoogle from "../assets/icons/IconGoogle.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   let nameInput = document.getElementById("name");
@@ -22,6 +18,7 @@ const Signup = () => {
   const [hasAddress, setAddressHasText] = useState(false);
   const [hasPassword, setHasPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
@@ -30,56 +27,11 @@ const Signup = () => {
 
   const handleToggleClick = () => {
     setPasswordType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-
-    const hidePasswordElement = document.getElementById('hide_password');
-    const showPasswordElement = document.getElementById('show_password');
-
-    if (passwordType === 'password') {
-      if (showPasswordElement) {
-        showPasswordElement.classList.add('hidden');
-      }
-      if (hidePasswordElement) {
-        hidePasswordElement.classList.remove('hidden');
-        hidePasswordElement.classList.add('flex');
-      }
-    } else {
-      if (hidePasswordElement) {
-        hidePasswordElement.classList.remove('flex');
-        hidePasswordElement.classList.add('hidden');
-      }
-      if (showPasswordElement) {
-        showPasswordElement.classList.remove('hidden');
-        showPasswordElement.classList.add('flex');
-      }
-    }
   };
 
   const handleToggleConfirmPassword = () => {
     setConfirmPasswordType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-
-    const hideConfirmPasswordElement = document.getElementById('hide_confirm_password');
-    const showConfirmPasswordElement = document.getElementById('show_confirm_password');
-
-    if (confirmPasswordType === 'password') {
-      if (showConfirmPasswordElement) {
-        showConfirmPasswordElement.classList.add('hidden');
-      }
-      if (hideConfirmPasswordElement) {
-        hideConfirmPasswordElement.classList.remove('hidden');
-        hideConfirmPasswordElement.classList.add('flex');
-      }
-    } else {
-      if (hideConfirmPasswordElement) {
-        hideConfirmPasswordElement.classList.remove('flex');
-        hideConfirmPasswordElement.classList.add('hidden');
-      }
-      if (showConfirmPasswordElement) {
-        showConfirmPasswordElement.classList.remove('hidden');
-        showConfirmPasswordElement.classList.add('flex');
-      }
-    }
   };
-
 
   const handlePasswordChange = (event) => {
     setPasswordInput(event.target.value);
@@ -89,17 +41,12 @@ const Signup = () => {
     setConfirmPasswordInput(event.target.value);
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validate passwords
     if (passwordInput !== confirmPasswordInput) {
-<<<<<<< HEAD
-      toast.error("Passwords do not match");
-=======
       alert("Passwords do not match");
->>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
       return;
     }
 
@@ -112,9 +59,10 @@ const Signup = () => {
       password: passwordInput,
     };
 
+   
     try {
       // Make the API call to the backend
-      const response = await axios.post('http://localhost:8000/api/register', formData);
+      const response = await api.post('http://localhost:8000/api/register', formData);
       console.log(response.data); // Handle the response as needed
 <<<<<<< HEAD
       nameInput.value = ""
@@ -133,23 +81,23 @@ const Signup = () => {
 =======
 
       // Redirect or show success message
-      alert("Signup successful!");
+      toast.success("Signup successful!");
+      navigate("/Login"); // Redirect to a protected route
     } catch (error) {
       console.error(error);
       // Handle errors appropriately
       alert("Signup failed. Please try again.");
->>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
     }
   };
 
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-60">
       <div className="w-full flex gap-[129px] items-center justify-center xl:max-w-[1220px] lg:max-w-[1220px] md:max-w-[1220px] mt-16 rounded-br-3xl">
         <div className="bg-customseablue w-[600px] h-[400px] flex items-end justify-center rounded-br-3xl rounded-tl-3xl ">
           <img src={market} alt="" className="rounded-br-3xl" />
         </div>
-        <div className="w-full h-[530px] flex flex-col gap-12 ">
+        <div className="w-full h-[530px] flex flex-col gap-12">
           <span className="flex flex-col gap-6">
             <h3 className="font-inter font-medium text-4xl text-black">
               Create an account
@@ -163,8 +111,8 @@ const Signup = () => {
               <div className="relative w-full">
                 <label
                   htmlFor="name"
-                  className={`absolute top-6 left-4 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasText ? "-top-[15px]  text-xs" : ""
+                  className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
+                    hasText ? "-top-4  text-xs" : ""
                   }`}
                 >
                   Name<span className="text-red-500">*</span>
@@ -185,7 +133,7 @@ const Signup = () => {
                 <label
                   htmlFor="email"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasEmailText ? "-top-[15px]  text-xs" : ""
+                    hasEmailText ? "-top-4  text-xs" : ""
                   }`}
                 >
                   Email<span className="text-red-500">*</span>
@@ -209,7 +157,7 @@ const Signup = () => {
                 <label
                   htmlFor="phone"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPhoneText ? "-top-[15px]  text-xs" : ""
+                    hasPhoneText ? "-top-4  text-xs" : ""
                   }`}
                 >
                   Phone<span className="text-red-500">*</span>
@@ -219,11 +167,7 @@ const Signup = () => {
                   id="phone"
                   className="w-full h-[50px] bg-customgray pl-4 outline-none pt-4 pb-1 peer"
                   type="tel"
-<<<<<<< HEAD
-                  placeholder=""
-=======
                   placeholder=" Placeholder"
->>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
                   onChange={(e) => setPhoneHasText(e.target.value !== "")}
                   title="Enter 10 digit telephone number without dashes or dots"
                   pattern="[0-9]{10}"
@@ -237,7 +181,7 @@ const Signup = () => {
                 <label
                   htmlFor="address"
                   className={`absolute left-4 top-6 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasAddress ? "-top-[15px]  text-xs" : ""
+                    hasAddress ? "-top-3  text-xs" : ""
                   }`}
                 >
                   Address (P.O.Box 25, Winneba)
@@ -261,7 +205,7 @@ const Signup = () => {
                 <label
                   htmlFor="password"
                   className={`absolute left-4 top-0 transform -translate-y-1/2 text-gray-500 pointer-events-none transition-all ${
-                    hasPassword ? "-top-[15px]  text-xs" : ""
+                    hasPassword ? "-top-4  text-xs" : ""
                   }`}
                 >
                   Password<span className="text-red-500">*</span>
@@ -433,7 +377,7 @@ const Signup = () => {
               </div>
             </span>
             <span className="flex flex-col gap-4">
-              <button className="flex w-48 items-center justify-center bg-blue-500 hover:bg-red-500 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
+              <button className="flex w-48 items-center justify-center bg-blue-500 hover:bg-blue-900 h-14 rounded-md text-white text-base font-poppins font-medium group-invalid:pointer-events-none group-invalid:opacity-30">
                 Create Account
               </button>
             </span>

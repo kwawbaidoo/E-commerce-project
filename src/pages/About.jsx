@@ -51,7 +51,7 @@ const About = () => {
   let path = location.pathname.slice(1);
   let paths = path.charAt(0).toUpperCase() + path.slice(1);
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center mt-72">
       <div className="w-full xl:max-w-[1305px] ml-36 flex items-start">
         <h3>
           Home / <span className="text-customred">{paths}</span>

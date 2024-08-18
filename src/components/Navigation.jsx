@@ -17,27 +17,25 @@ const Navigation = () => {
 =======
 import shopEasy from '../assets/images/ShopEasy.png';
 import AccountDropDown from '../components/AccountDropDown';
+import { useCart } from "../helper/CartContext";
 
 const Navigation = () => {
+  const {cart} = useCart();
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 >>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
- 
-    
-     
   return (
-    <div className="fixed top-0 left-0 right-0 bg-customgray bg-opacity-">
+    <div className="fixed z-50 top-0 left-0 right-0 bg-customgray">
       <Top />
       <div className="w-full flex flex-col items-center justify-center p-8 ">
         <div className="flex md:max-w-[1170px] xl:max-w-[1170px] gap-36 items-center ">
           <span className="flex gap-48 w-full xl:max-w-[675px] ">
             {/* <Link to="/" className="font-inter font-semibold text-2xl text-customred  border w-full flex items-center justify-center bg-white shadow-md rounded-lg"><img className="w-full" src={shopEasy} alt="" /></Link> */}
               <img className="w-40 shadow-lg" src={shopEasy} alt="" />
-            <ul className="flex gap-12 font-poppins text-base items-center  w-full">
+            <ul className="flex gap-8 font-poppins text-base items-center  w-full">
               <li>
                 <Link to="/" className="hover:underline">
                   Home
@@ -53,14 +51,20 @@ const Navigation = () => {
                   About
                 </Link>
               </li>
-              <li className="w-20 ">
+              <li className="w-16 ">
                 <Link to="/signup" className="hover:underline  ">
                   Sign Up
                 </Link>
               </li>
+<<<<<<< HEAD
               <li className="w-20 ">
                 <Link to="/login" className="hover:underline  ">
                   Login
+=======
+              <li className=" ">
+                <Link to="/dashboard" className="hover:underline  ">
+                  Admin
+>>>>>>> 008f0f2ba523358c5b2a08f4793fadaaf1307908
                 </Link>
               </li>
             </ul>
@@ -106,7 +110,7 @@ const Navigation = () => {
                   />
                 </svg>
               </a>
-              <span className="flex  relative">
+              <Link to="/cart" className="flex relative">
                 <a href="" className="">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -123,10 +127,10 @@ const Navigation = () => {
                     />
                   </svg>
                 </a>
-                <span className="absolute flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
-                  1
+                <span className="absolute cursor-pointer flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
+                {cart ? cart.length : 0}
                 </span>
-              </span>
+              </Link>
               <div
                 id="profileImage"
 <<<<<<< HEAD
@@ -135,11 +139,16 @@ const Navigation = () => {
                 <span id="nameInitial">{userInitials}</span>
 =======
                 onClick={openModal}
-                className="w-10 h-10 cursor-pointer rounded-full bg-customred flex justify-center items-center text-white font-medium"
+                className="w-10 h-10 cursor-pointer rounded-full bg-customred hidden justify-center items-center text-white font-medium"
               >
+<<<<<<< HEAD
                 <span>FK </span>
                 <AccountDropDown isOpen={isModalOpen} onClose={closeModal} />
 >>>>>>> 0cc64a9b22b11e22633a2a8c40371bc3f4abc8ac
+=======
+                <span id="userInitials"> </span>
+                <AccountDropDown isOpen={isModalOpen} onClose={closeModal}/>
+>>>>>>> 008f0f2ba523358c5b2a08f4793fadaaf1307908
               </div>
             </div>
           </div>
