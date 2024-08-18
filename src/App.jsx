@@ -30,7 +30,6 @@ function App() {
         <Route path="/category" element={<Category/>} />
         <Route path="/profileEdit" element={<ProfileEdit/>}/>
       </Routes>
-      <AdminAddProduct/>
       <Footer />
       <ToastContainer />
     </div>
