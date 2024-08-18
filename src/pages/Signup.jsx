@@ -64,7 +64,6 @@ const Signup = () => {
       // Make the API call to the backend
       const response = await api.post('http://localhost:8000/api/register', formData);
       console.log(response.data); // Handle the response as needed
-<<<<<<< HEAD
       nameInput.value = ""
       emailInput.value = ""
       phoneInput.value = ""
@@ -78,16 +77,10 @@ const Signup = () => {
       console.error(error);
       // Handle errors appropriately
       toast.error("Signup failed. Please try again.");
-=======
 
       // Redirect or show success message
       toast.success("Signup successful!");
       navigate("/Login"); // Redirect to a protected route
-    } catch (error) {
-      console.error(error);
-      // Handle errors appropriately
-      alert("Signup failed. Please try again.");
-    }
   };
 
 
@@ -400,5 +393,5 @@ const Signup = () => {
     </div>
   );
 };
-
+}
 export default Signup;
