@@ -16,13 +16,6 @@ const Login = () => {
  let  User_Initials = document.getElementById("userInitials");
   const [userInitials, setUserInitials] = useState("");
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      //navigate("/"); 
-    }
-  }, [navigate]);
-
 
   const handleToggleClick = () => {
     setPasswordType((prevType) =>
@@ -81,6 +74,7 @@ const Login = () => {
  const user_Initials = getUserInitials();
  User_Initials.innerText= user_Initials;
   };
+  
 
   function getUserInitials() {
     const fullName = localStorage.getItem('user');
