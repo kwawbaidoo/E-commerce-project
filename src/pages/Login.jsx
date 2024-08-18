@@ -1,6 +1,6 @@
 import { json, Link, useNavigate } from "react-router-dom";
 import market from "../assets/images/marketpng.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from "../api";
@@ -15,6 +15,13 @@ const Login = () => {
   const signUp = document.getElementById("signUp");
  let  User_Initials = document.getElementById("userInitials");
   const [userInitials, setUserInitials] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      //navigate("/"); 
+    }
+  }, [navigate]);
 
 
   const handleToggleClick = () => {
