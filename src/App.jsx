@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
 import About from "./pages/About";
@@ -8,6 +7,7 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "./pages/Login";
 import Category from "./components/Category";
+import ProfileEdit from "./components/ProfileEdit";
 import AdminAddProduct from "./components/AddminAddProduct";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,6 +23,7 @@ function App() {
     <CartProvider>
       
         <div>
+          <ToastContainer/>
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
