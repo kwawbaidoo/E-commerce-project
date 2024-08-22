@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "./pages/Login";
 import Category from "./components/Category";
-import ProfileEdit from "./components/ProfileEdit";
 import AdminAddProduct from "./components/AddminAddProduct";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

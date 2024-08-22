@@ -1,8 +1,7 @@
-import Navigation from "../components/Navigation";
 import React, { useState } from "react";
 import market from "../assets/images/marketpng.png";
 import IconGoogle from "../assets/icons/IconGoogle.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   let nameInput = document.getElementById("name");
