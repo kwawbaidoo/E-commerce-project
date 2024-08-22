@@ -114,7 +114,7 @@ const Login = () => {
                 placeholder="Email"
                 value={email}
                 onChange={handleEmailChange}
-                pattern="[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required
               />
               <span className="hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">

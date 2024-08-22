@@ -1,25 +1,25 @@
 import { useState } from "react";
-import "./App.css";
-
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
-import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';import Login from "./pages/Login";
 import Category from "./components/Category";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { UserProvider } from "./components/UserContext";
 import ProfileEdit from "./components/ProfileEdit";
-import AdminAddProduct from "./components/AddminAddProduct";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [count, setCount] = useState(0);
 
+
   return (
     <div>
+      <UserProvider>
+      <ToastContainer/>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,7 +31,7 @@ function App() {
         <Route path="/profileEdit" element={<ProfileEdit/>}/>
       </Routes>
       <Footer />
-      <ToastContainer />
+      </UserProvider>
     </div>
   );
 }
