@@ -64,21 +64,12 @@ const Signup = () => {
       // Make the API call to the backend
       const response = await api.post('http://localhost:8000/api/register', formData);
       console.log(response.data); // Handle the response as needed
-<<<<<<< HEAD
       nameInput.value = ""
       emailInput.value = ""
       phoneInput.value = ""
       paswordInput.value = ""
       confirmpasswordInput.value = ""
       addressInput.value = "" ;
-
-      // Redirect or show success message
-      toast.success("Signup successful!");
-    } catch (error) {
-      console.error(error);
-      // Handle errors appropriately
-      toast.error("Signup failed. Please try again.");
-=======
 
       // Redirect or show success message
       toast.success("Signup successful!");
