@@ -11,14 +11,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./components/UserContext";
 import ProfileEdit from "./components/ProfileEdit";
+import { CartProvider } from "./helper/CartContext";
 
 function App() {
   const [count, setCount] = useState(0);
 
 
   return (
-    <div>
-      <UserProvider>
+    <CartProvider>
+          <div>
       <ToastContainer/>
       <Navigation />
       <Routes>
@@ -31,8 +32,9 @@ function App() {
         <Route path="/profileEdit" element={<ProfileEdit/>}/>
       </Routes>
       <Footer />
-      </UserProvider>
     </div>
+    </CartProvider>
+
   );
 }
 
