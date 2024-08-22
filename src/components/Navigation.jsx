@@ -117,16 +117,14 @@ const Navigation = () => {
                 {cart ? cart.length : 0}
                 </span>
               </Link>
+
               <div
                 id="profileImage"
                 onClick={openModal}
                 className="w-10 h-10 rounded-full bg-customred hidden justify-center items-center text-white font-medium"
               >
                 <span id="nameInitial">{}</span>
-
-                
                 <AccountDropDown isOpen={isModalOpen} onClose={closeModal} />
-
               </div>
             </div>
           </div>
