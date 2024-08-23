@@ -3,7 +3,7 @@ import market from "../assets/images/marketpng.png";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import api from "../api";
+// import api from "../api";
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState("password");
@@ -200,7 +200,7 @@ const Login = () => {
                 Log in
               </button>
               <h4 className="text-customred font-poppins text-base font-light">
-                <Link to="" className="underline">
+                <Link to="/forgetpass" className="underline">
                   Forget Password
                 </Link>
               </h4>
