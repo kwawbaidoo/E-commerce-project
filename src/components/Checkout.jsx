@@ -47,11 +47,12 @@ const Checkout = () => {
  
 
   return (
-    <div>
-    <div className="p-4  mt-72 flex flex-col gap-14 items-center">
-      <h2 className="text-2xl font-bold mb-4">Checkout</h2>
-      <form onSubmit={handleSubmit} className="w-full max-w-5xl ">
-        <div className="bg-white p-6 rounded shadow-md">
+    <div className="mt-48">
+      <p className="text-xl ms-20 font-light mb-4">Checkout</p>
+    <div className="p-4 flex  gap-14 items-center justify-center">
+      
+      <form onSubmit={handleSubmit} className="w-full flex gap-16 max-w-6xl ">
+        <div className="bg-white p-6 rounded w-full shadow-md">
           <h3 className="text-xl font-semibold mb-4">Billing Details</h3>
           <div className="grid grid-cols-1 gap-4">
             <input
@@ -121,7 +122,7 @@ const Checkout = () => {
         </div>
 
         <section className="flex mt-14 h-full justify-between">
-          <div className="bg-white w-72 p-6 mt-6 flex flex-col rounded shadow-md">
+          {/* <div className="bg-white w-72 p-6 mt-6 flex flex-col rounded shadow-md">
             <h3 className="text-xl font-semibold flex gap-2 mb-4 w-full ">
               Payment{" "}
               <span>
@@ -187,7 +188,7 @@ const Checkout = () => {
             
              
             </div>
-          </div>
+          </div> */}
         
           <div className="bg-white w-96 p-6 mt-6 rounded shadow-md">
             <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
@@ -215,7 +216,7 @@ const Checkout = () => {
         </section>
       </form>
 
-      <PaymentForm/>
+      {/* <PaymentForm/> */}
     
     </div>
     </div>

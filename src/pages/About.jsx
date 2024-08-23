@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import sideimage from "..//assets/images/SideImage.png";
 import kwawImage from "../assets/images/kwaw.png";
 import { useLocation } from "react-router-dom";
@@ -44,8 +45,34 @@ const About = () => {
     },
   ];
 
- 
-  console.log(data);
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const profileImage = document.getElementById("profileImage");
+    const signUp = document.getElementById("signUp");
+    let userInitials = document.getElementById("userInitials");
+
+    if (storedUser) {
+      profileImage.style.display = "flex";
+      signUp.style.display = "none";
+      const initials = getUserInitials(storedUser);
+      userInitials.innerText= initials;
+    }
+  }, []);
+
+  function getUserInitials(fullName) {
+    console.log(fullName);
+    if (!fullName) {
+      return "";
+    }
+    const nameParts = fullName.split(" ");
+    console.log(nameParts);
+
+    const initials = nameParts
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    return initials;
+  }
 
   const location = useLocation();
   let path = location.pathname.slice(1);
