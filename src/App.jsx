@@ -15,6 +15,7 @@ import Cart from "./components/Cart";
 import { CartProvider } from "./helper/CartContext";
 import Checkout from "./components/Checkout";
 import ProfileEdit from "./components/ProfileEdit";
+import { CartProvider } from "./helper/CartContext";
 
 function App() {
   return (
