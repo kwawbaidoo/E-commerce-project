@@ -10,6 +10,7 @@ import headphone from "../assets/images/Icon-Customer service.png";
 import delivery from "../assets/images/icon-delivery.png";
 import secure from "../assets/images/Icon-secure.png";
 import sale from "../assets/images/dollar.png";
+import AllProductsPage from "../pages/AllProductsPage";
 
 const About = () => {
   const data = [
@@ -180,7 +181,7 @@ const About = () => {
                     <h3 className="font-poppins font-normal text-sm">We reurn money within 30 days</h3>
                 </div>
             </div>
-
+            <AllProductsPage/>
         </div>
       </section>
     </div>

@@ -1,15 +1,17 @@
+import Headphone from '../assets/images/ideapad.png'
+import { Link } from 'react-router-dom';
 
-
-const ItemCard = ({imageUrl,name,price, addToCart, brand}) => {
+const ItemCard = ({id, imageUrl,name,price, addToCart, brand, description}) => {
   console.log('Image URL:', imageUrl);
   return (
     <>
-      <section className="flex justify-center items-center mt-4">
-        <div className=" flex flex-col w-[380px] h-[430px] hover:shadow-md hover:bg-slate-50 bg-customgray cursor-pointer items-center  justify-evenly rounded-md">
+      <section className="flex p-3 justify-center items-center mt-4">
+      <div className=' w-[250px] h-[300px]'>
+        <Link to={`/productdetails/${id}`} className=" flex h-[300px] w-[250px] justify-between flex-col hover:shadow-md hover:bg-slate-50 bg-customgray cursor-pointer rounded-md">
           <div className="flex relative align-content-center justify-center   w-full">
             <img
-              className="w-auto h-60 -ml-5 mt-10"
-              src={imageUrl  || 'path/to/fallback-image.png'}
+              className="w-[150px] h-[150px] -ml-5 mt-10 p-5"
+              src={Headphone}
               alt={name}
             />
             <span className=" flex flex-col gap-2">
@@ -41,27 +43,26 @@ const ItemCard = ({imageUrl,name,price, addToCart, brand}) => {
               </span>
             </span>
           </div>
-          <div className="flex flex-col gap-1 mt-2 p-2 w-full">
-            <p className="font-poppins font-medium text-base">
+          <div className="flex flex-col gap-1 ps-2 w-full">
+            <p className="font-poppins font-medium w-full max-w-50 text-xs">
               {name}
             </p>
-            <p className="font-poppins font-medium text-base">
-              {brand}
-            </p>
-            <div className="flex gap-2">
+            
+            <div className="flex gap-2 ">
               <span className="font-poppins font-medium text-base text-customred">
-                {price}
+                GH&#8373; {price}
               </span>
               <span className="line-through font-poppins font-medium text-base text-textgray">
-                {price}
+                GH&#8373; {price}
               </span>
             </div>
           </div>
-          <button onClick={addToCart} className="bg-black flex items-center justify-center -mb-3 w-full h-10 text-white font-poppins text-base rounded-bl-lg rounded-br-lg hover:bg-customred">
+          <button onClick={addToCart} className="bg-black flex items-center justify-center -mb-4 w-full p-3 text-white font-poppins text-base rounded-bl-lg rounded-br-lg hover:bg-customred">
             Add to cart
           </button>
+        </Link>
         </div>
-      </section>
+      </section> 
     </>
   );
 };
