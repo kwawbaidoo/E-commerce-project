@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
 import About from "./pages/About";
@@ -15,10 +14,7 @@ import Dashboard from "./components/Dashboard";
 import Cart from "./components/Cart";
 import { CartProvider } from "./helper/CartContext";
 import Checkout from "./components/Checkout";
-import "react-toastify/dist/ReactToastify.css";
 import ProfileEdit from "./components/ProfileEdit";
-
-
 
 function App() {
   return (
