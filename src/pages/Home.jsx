@@ -4,30 +4,31 @@ import ItemCard from "./ItemCard";
 import Cart from "../components/Cart";
 import { useProduct } from "../helper/ProductsContext";
 import { useCart } from "../helper/CartContext";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { cart, setCart } = useCart();
-  const { products, setProducts } = useProduct([]);
+  const { products } = useProduct();
 
-  useEffect(() => {
-    fetchProducts();
-  }, []); // Fetch products only once on component mount
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []); 
 
-  function fetchProducts() {
-    fetch("http://localhost:3020/products")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Fetched products:", data); // Log the fetched data
-        setProducts(data);
-      })
-      .catch((err) => {
-        console.error("Error fetching products:", err);
-      });
-  }
+  // function fetchProducts() {
+  //   fetch("http://localhost:3020/products")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Fetched products:", data); 
+  //       setProducts(data);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error fetching products:", err);
+  //     });
+  // }
 
-  useEffect(() => {
-    console.log("Updated products state:", products); // This will log the updated products state
-  }, [products]); // This useEffect will run every time `products` is updated
+  // useEffect(() => {
+  //   console.log("Updated products state:", products); 
+  // }, [products]); 
 
   function addToCart(product) {
     const existingItem = cart.find((cartItem) => cartItem.id === product.id);
@@ -42,7 +43,10 @@ const Home = () => {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
+    
   }
+
+
 
   return (
     <div className="">
@@ -53,15 +57,18 @@ const Home = () => {
 
       <div className="mt-72 flex gap-5 flex-wrap align-items-center justify-center">
         {products?.length > 0 ? (
-          products?.map((product, key) => (
+          products?.map((product) => (
+         
             <ItemCard 
-              key={key} 
+              id={product.id}
               name={product.name} 
               price={product.price} 
               imageUrl={product.imageUrl} 
               brand={product.brand}
               addToCart={() => addToCart(product)}
+              
             />
+          
           ))
         ) : (
           <p>No products available.</p> 

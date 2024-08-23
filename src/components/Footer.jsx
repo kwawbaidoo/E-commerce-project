@@ -7,6 +7,7 @@ import IconTwitter from "../assets/icons/Icon-Twitter.png";
 import Qrcode from "../assets/icons/Qrcode.png";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -66,7 +67,7 @@ const Footer = () => {
                 <h3>Privacy Policy</h3>
                 <h3>Terms Of Use</h3>
                 <h3>FAQ</h3>
-                <h3>Contact</h3>
+                <Link to="/contact">Contact</Link>
                 </span>
             </span>
         </div>
