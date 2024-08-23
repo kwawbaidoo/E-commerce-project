@@ -11,10 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const profileImage = document.getElementById("profileImage");
-  const signUp = document.getElementById("signUp");
- let  User_Initials = document.getElementById("userInitials");
-  const [userInitials, setUserInitials] = useState("");
+  
 
 
   const handleToggleClick = () => {
@@ -53,8 +50,6 @@ const Login = () => {
     setPasswordInput(event.target.value);
   };
 
- 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -62,34 +57,27 @@ const Login = () => {
         email,
         password: passwordInput,
       });
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", response.data.user.name);
-      profileImage.style.display="flex";
-      toast.success("Login sucessfull");
-      navigate("/"); // Redirect to a protected route
-      signUp.style.display="none";
+      
+      const { token, user } = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", user.name);
+      const userRole = user.role; // Assume the role is returned from the backend
+  
+      if (userRole === "admin") {
+        navigate("/dashboard"); // Redirect to admin dashboard
+      } else if (userRole === "customer") {
+        navigate("/"); // Redirect to customer dashboard
+      } else {
+        throw new Error("Unauthorized role");
+      }
+  
+      toast.success("Login successful");
     } catch (error) {
-      toast.error("Invalid email or password");
+      toast.error("Invalid email, password, or unauthorized role");
     }
- const user_Initials = getUserInitials();
- User_Initials.innerText= user_Initials;
+  
+   
   };
-  
-
-  function getUserInitials() {
-    const fullName = localStorage.getItem('user');
-    console.log(fullName);
-    if (!fullName) {
-        return ''; 
-    }
-    const nameParts = fullName.split(' ');;
-    console.log(nameParts);
-  
-    const initials = nameParts.map(word => word.charAt(0).toUpperCase()).join('');
-  
-  return initials;
-    
-  }
   
   return (
     <div className=" flex items-center justify-center mt-48">

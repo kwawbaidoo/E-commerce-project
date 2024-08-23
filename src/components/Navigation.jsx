@@ -4,7 +4,7 @@ import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import Top from "./Top";
 import Home from "../pages/Home";
-import Products from "../products/Products";
+import { useCart } from "../helper/CartContext";
 import { useState, useEffect } from "react";
 import { UserContext } from "./UserContext";
 import shopEasy from '../assets/images/ShopEasy.png';
@@ -14,15 +14,11 @@ import { useCart } from "../helper/CartContext";
 const Navigation = () => {
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { cart} = useCart();
-
+  const { cart } = useCart();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
- 
-    
-     
   return (
     <div className="fixed z-50 top-0 left-0 right-0 bg-customgray">
       <Top />
@@ -30,7 +26,7 @@ const Navigation = () => {
         <div className="flex md:max-w-[1170px] xl:max-w-[1170px] gap-36 items-center ">
           <span className="flex gap-48 w-full xl:max-w-[675px] ">
             {/* <Link to="/" className="font-inter font-semibold text-2xl text-customred  border w-full flex items-center justify-center bg-white shadow-md rounded-lg"><img className="w-full" src={shopEasy} alt="" /></Link> */}
-              <img className="w-40 shadow-lg" src={shopEasy} alt="" />
+            <img className="w-40 shadow-lg" src={shopEasy} alt="" />
             <ul className="flex gap-12 font-poppins text-base items-center  w-full">
               <li>
                 <Link to="/" className="hover:underline">
@@ -50,11 +46,6 @@ const Navigation = () => {
               <li id="signUp" className="w-20">
                 <Link to="/signup" className="hover:underline  ">
                   Sign Up
-                </Link>
-              </li>
-              <li className=" ">
-                <Link to="/dashboard" className="hover:underline  ">
-                  Admin
                 </Link>
               </li>
             </ul>
@@ -100,34 +91,32 @@ const Navigation = () => {
                   />
                 </svg>
               </a>
-              <span className="flex  relative">
-                <a href="" className="">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6 hover:stroke-customred"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                    />
-                  </svg>
-                </a>
+              <Link to="/cart" className="flex  relative">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6 hover:stroke-customred"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                  />
+                </svg>
                 <span className="absolute flex items-center justify-center -top-1 text-xs -right-1 font-inter font-bold w-4 h-4 rounded-full bg-customred text-white">
                   {cart.length}
                 </span>
-              </span>
+              </Link>
               <div
                 id="profileImage"
                 onClick={openModal}
                 className="w-10 h-10 cursor-pointer rounded-full bg-customred hidden justify-center items-center text-white font-medium"
               >
                 <span id="userInitials"> </span>
-                <AccountDropDown isOpen={isModalOpen} onClose={closeModal}/>
+                <AccountDropDown isOpen={isModalOpen} onClose={closeModal} />
               </div>
             </div>
           </div>

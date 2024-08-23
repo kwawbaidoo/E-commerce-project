@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 const Contact = () => {
   const [hasText, setHasText] = useState(false);
@@ -8,6 +8,36 @@ const Contact = () => {
   const location = useLocation();
   let path = location.pathname.slice(1);
   let paths = path.charAt(0).toUpperCase() + path.slice(1);
+
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const profileImage = document.getElementById("profileImage");
+    const signUp = document.getElementById("signUp");
+    let userInitials = document.getElementById("userInitials");
+
+    if (storedUser) {
+      profileImage.style.display = "flex";
+      signUp.style.display = "none";
+      const initials = getUserInitials(storedUser);
+      userInitials.innerText= initials;
+    }
+  }, []);
+
+  function getUserInitials(fullName) {
+    console.log(fullName);
+    if (!fullName) {
+      return "";
+    }
+    const nameParts = fullName.split(" ");
+    console.log(nameParts);
+
+    const initials = nameParts
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    return initials;
+  }
 
 
   return (
