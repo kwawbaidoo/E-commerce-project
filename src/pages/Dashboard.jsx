@@ -45,52 +45,79 @@ const Dashboard = () => {
   ];
   const [orders, setOrders] = useState([]);
 
-  function fetchProducts() {
-    fetch("http://localhost:3020/orders")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setOrders(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  async function fetchOrders() {
+    try {
+      const response = await fetch("http://localhost:8000/api/orders");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setOrders(data); // Assuming `setOrders` is a state setter function for storing orders
+    } catch (err) {
+      console.error('Error fetching orders:', err);
+    }
   }
 
-  
   useEffect(() => {
-    fetchProducts();
-  }, [orders]);
+    fetchOrders();
+  }, []);
+  
+  const [cardsData, setCardsData] = useState({
+    totalOrders: '0',
+    activeOrders: '0',
+    completedOrders: '0',
+    totalUsers: '0',
+  });
+
+  useEffect(() => {
+    const fetchCardsData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/getCards');
+        const data = await response.json();
+        setCardsData({
+          totalOrders: data.total_orders || '0',
+          activeOrders: data.pending_orders || '0',
+          completedOrders: data.completed_orders || '0',
+          totalUsers: data.total_users || '0',
+        });
+      } catch (error) {
+        console.error('Error fetching card data:', error);
+      }
+    };
+
+    fetchCardsData();
+  }, []);
+
   return (
-    <div className="flex  flex-col md:flex-row h-screen border bg-gray-100">
-      <main className="w-full md:w-10/12 p-4">
+    <div className="flex  flex-col md:flex-row h-screen  bg-gray-100">
+      <main className="w-full w-full p-4">
         <Header />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">
           <StatsCard
             title="Total Orders"
             GHS="GHS"
-            amount="126,500"
+            amount={cardsData.totalOrders}
             comparison="34.7"
             bgColor="bg-white"
             icon={<IconShoppingBag size="32" color="#FFFF" />}
           />
           <StatsCard
             title="Active Orders"
-            amount="126,500"
+            amount={cardsData.activeOrders}
             comparison="34.7"
             bgColor="bg-white"
           />
           <StatsCard
             title="Completed Orders"
             GHS="GHS"
-            amount="126,500"
+            amount={cardsData.completedOrders}
             comparison="34.7"
             bgColor="bg-white"
             icon={<IconShoppingBag size="32" color="#FFFF" />}
           />
           <StatsCard
             title="Customers"
-            amount="500"
+            amount={cardsData.totalUsers}
             comparison=""
             bgColor="bg-white"
             icon={<IconUsersGroup size="32" color="#FFFF" />}

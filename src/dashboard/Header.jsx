@@ -1,6 +1,17 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user')
+    toast.success("Logout successfull");
+    window.location.href = '/login';
+
+  };
+  
   return (
     <div className="flex justify-between">
       <div>
@@ -8,7 +19,7 @@ const Header = () => {
         <p>Home &gt; Dashboard</p>
       </div>
       <div>
-        <button className="bg-gray-200 p-2 rounded">Admin</button>
+        <button onClick={handleLogout} className="bg-gray-200 p-2 rounded">Logout</button>
       </div>
     </div>
   );

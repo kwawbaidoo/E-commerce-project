@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "../helper/CartContext"; // Import the CartContext
 import PaymentForm from "./PaymentForm";
 
@@ -13,7 +13,10 @@ const Checkout = () => {
     country: "",
     phone: "",
   });
-  const [paymentMethod, setPaymentMethod] = useState("cod"); // Default to Cash on Delivery
+  const [paymentMethod, setPaymentMethod] = useState("cod"); 
+
+  const [name, setName] = useState("")
+  const [amount, setAmount] = useState("")
 
   const handleBillingChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +29,34 @@ const Checkout = () => {
   const handlePaymentChange = (e) => {
     setPaymentMethod(e.target.value);
   };
+
+  
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const profileImage = document.getElementById("profileImage");
+    const signUp = document.getElementById("signUp");
+    let userInitials = document.getElementById("userInitials");
+
+    if (storedUser) {
+      profileImage.style.display = "flex";
+      signUp.style.display = "none";
+      const initials = getUserInitials(storedUser);
+      userInitials.innerText= initials;
+    }
+  }, []);
+
+  function getUserInitials(fullName) {
+    if (!fullName) {
+      return "";
+    }
+    const nameParts = fullName.split(" ");
+
+    const initials = nameParts
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    return initials;
+  }
 
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -122,74 +153,6 @@ const Checkout = () => {
         </div>
 
         <section className="flex mt-14 h-full justify-between">
-          {/* <div className="bg-white w-72 p-6 mt-6 flex flex-col rounded shadow-md">
-            <h3 className="text-xl font-semibold flex gap-2 mb-4 w-full ">
-              Payment{" "}
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M18.04 13.55c-.42.41-.66 1-.6 1.63.09 1.08 1.08 1.87 2.16 1.87h1.9v1.19c0 2.07-1.69 3.76-3.76 3.76H7.63c.31-.26.58-.58.79-.94.37-.6.58-1.31.58-2.06a3.999 3.999 0 0 0-6.5-3.12v-4.37c0-2.07 1.69-3.76 3.76-3.76h11.48c2.07 0 3.76 1.69 3.76 3.76v1.44h-2.02c-.56 0-1.07.22-1.44.6Z"
-                    stroke="#FF8A65"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M2.5 12.41V7.84c0-1.19.73-2.25 1.84-2.67l7.94-3a1.9 1.9 0 0 1 2.57 1.78v3.8M22.559 13.97v2.06c0 .55-.44 1-1 1.02h-1.96c-1.08 0-2.07-.79-2.16-1.87-.06-.63.18-1.22.6-1.63.37-.38.88-.6 1.44-.6h2.08c.56.02 1 .47 1 1.02ZM7 12h7"
-                    stroke="#FF8A65"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M9 19c0 .75-.21 1.46-.58 2.06-.21.36-.48.68-.79.94-.7.63-1.62 1-2.63 1a3.97 3.97 0 0 1-3.42-1.94A3.92 3.92 0 0 1 1 19c0-1.26.58-2.39 1.5-3.12A3.999 3.999 0 0 1 9 19ZM6.492 18.98h-2.98M5 17.52v2.99"
-                    stroke="#FF8A65"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                </svg>
-              </span>{" "}
-              Method
-            </h3>
-            <div className="flex justify-center align-items-center flex-col h-full gap-2">
-              <label className="bg-red-100 w-48 p-2 rounded-md flex justify-center cursor-pointer">
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="cod"
-                  checked={paymentMethod === "cod"}
-                  onChange={handlePaymentChange}
-                  className="mr-2"
-                />
-                Cash on Delivery
-              </label>
-              <br />
-             
-                    <label className="w-48 bg-blue-100 cursor-pointer p-2 rounded-md">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="mobileMoney"
-                      checked={paymentMethod === "mobileMoney"}
-                      onChange={handlePaymentChange}
-                      className="mr-2"
-                      
-                    />
-                    Mobile Money
-                  </label>
-            
-             
-            </div>
-          </div> */}
-        
           <div className="bg-white w-96 p-6 mt-6 rounded shadow-md">
             <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
             <div className="flex justify-between mb-2">

@@ -57,10 +57,13 @@ const Login = () => {
         email,
         password: passwordInput,
       });
-      
+      console.log(response); // Add this line
+
+  
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", user.name);
+      // localStorage.setItem("tokenable_id",tokenable_id);
       const userRole = user.role; // Assume the role is returned from the backend
   
       if (userRole === "admin") {
@@ -73,11 +76,16 @@ const Login = () => {
   
       toast.success("Login successful");
     } catch (error) {
-      toast.error("Invalid email, password, or unauthorized role");
+      if (error.response && error.response.status === 401) {
+        toast.error("Unauthorized access. Please check your credentials.");
+      } else if (error.response && error.response.status === 400) {
+        toast.error("Validation error. Please check your input.");
+      } else {
+        toast.error("Invalid email, password, or unauthorized role");
+      }
     }
-  
-   
   };
+  
   
   return (
     <div className=" flex items-center justify-center mt-48">
@@ -188,7 +196,7 @@ const Login = () => {
                 Log in
               </button>
               <h4 className="text-customred font-poppins text-base font-light">
-                <Link to="" className="underline">
+                <Link to="/forgetpass" className="underline">
                   Forget Password
                 </Link>
               </h4>

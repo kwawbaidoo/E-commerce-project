@@ -7,8 +7,8 @@ import Home from "../pages/Home";
 import { useCart } from "../helper/CartContext";
 import { useState, useEffect } from "react";
 import { UserContext } from "./UserContext";
-import shopEasy from "../assets/images/ShopEasy.png";
-import AccountDropDown from "../components/AccountDropDown";
+import shopEasy from '../assets/images/ShopEasy.png';
+import AccountDropDown from '../components/AccountDropDown';
 
 const Navigation = () => {
   const [categories, setCategories] = useState([]);
