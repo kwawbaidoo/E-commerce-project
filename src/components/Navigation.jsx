@@ -6,6 +6,7 @@ import Top from "./Top";
 import Home from "../pages/Home";
 import Products from "../products/Products";
 import { useState, useEffect } from "react";
+import { UserContext } from "./UserContext";
 import shopEasy from '../assets/images/ShopEasy.png';
 import AccountDropDown from '../components/AccountDropDown';
 
@@ -48,6 +49,11 @@ const Navigation = () => {
                   Sign Up
                 </Link>
               </li>
+              <li className=" ">
+                <Link to="/dashboard" className="hover:underline  ">
+                  Admin
+                </Link>
+              </li>
             </ul>
           </span>
 
@@ -74,7 +80,7 @@ const Navigation = () => {
               </svg>
             </span>
 
-            <div className="flex gap-6 items-center ml-5  ">
+            <div className="flex gap-6 items-center ml-5 border ">
               <a className=" p-1 rounded-sm" href="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

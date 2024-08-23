@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BestSellingMonth from "../components/BestSellingMonth";
-import Category from "../components/Category";
-import Flashsales from "../components/Flashsales";
-import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import Navigation from "../components/Navigation";
-import LoadingOverlay from "../components/LoadingOverlay";
 import ItemCard from "./ItemCard";
 import Cart from "../components/Cart";
 import { useCart } from "../helper/CartContext";
