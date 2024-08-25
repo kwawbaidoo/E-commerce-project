@@ -131,8 +131,8 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((item) => (
-              <tr key={item.id}>
+            {cart.map((item,key) => (
+              <tr key={key}>
                 <td className="border px-4 py-2 flex items-center">
                   <img
                     src={item?.imageUrl}
@@ -173,7 +173,8 @@ const Cart = () => {
                   />
                 </td>
                 <td className="border px-4 py-2 text-center">
-                  ${item.price * item.quantity}
+                ${(item.price * item.quantity).toFixed(2)}
+
                 </td>
               </tr>
             ))}
@@ -197,7 +198,7 @@ const Cart = () => {
           <h2 className="font-bold">Cart Total</h2>
           <span className="flex justify-between border-b">
             <p>Subtotal: </p>
-            <p>${subtotal}</p>
+            <p>${(subtotal).toFixed(2)}</p>
           </span>
           <span className="flex justify-between border-b">
             <p>Shipping: </p>
@@ -205,7 +206,7 @@ const Cart = () => {
           </span>
           <span className="flex justify-between border-b">
             <p>Total: </p>
-            <p>${subtotal + shipping}</p>
+            <p>${(subtotal + shipping).toFixed(2)}</p>
           </span>
           <Link to="/checkout">
             <button className="bg-red-500 text-white px-4 py-2 rounded mt-2" onClick={handleCheckout}>

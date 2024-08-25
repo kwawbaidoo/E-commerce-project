@@ -39,7 +39,7 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     // Validate passwords
     if (passwordInput !== confirmPasswordInput) {
       toast.error("Passwords do not match");
@@ -60,7 +60,7 @@ const Signup = () => {
       // Make the API call to the backend
       const response = await api.post('http://localhost:8000/api/register', formData);
       console.log(response.data); // Handle the response as needed
-
+      login(response.data.token, response.data.user);
       // Redirect or show success message
       toast.success("Signup successful!");
       navigate("/Login"); // Redirect to a protected route

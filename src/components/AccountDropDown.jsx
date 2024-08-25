@@ -35,7 +35,7 @@ const AccountDropDown = ({ isOpen, onClose }) => {
         <button onClick={onClose} className="absolute top-0 right-0 mt-4 mr-4 text-gray-500  modal-overlay">
           &#x2715;
         </button>
-        <em className="text-md font-semibold  text-gray-500 ">Profile</em>
+        <em className="text-md font-semibold text-gray-500 ">Profile</em>
         <ul className='flex flex-col mt-4'>
 
           <Link onClick={onClose} to="/profileEdit" className="mb-2 modal-overlay">

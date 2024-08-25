@@ -14,7 +14,7 @@ const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
               alt={name}
             />
             <span className=" flex flex-col gap-2">
-              <span className="w-8 h-8 absolute right-3 top-3 rounded-full bg-white flex items-center justify-center">
+              <Link to={`/productdetails/${id}`} className="w-8 h-8 absolute right-3 top-3 rounded-full bg-white flex items-center justify-center">
                 {/* <img className="" src={view} alt="" /> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
                     strokeLinejoin="round"
                   ></path>
                 </svg>
-              </span>
+              </Link>
             </span>
           </div>
           <div className="flex flex-col gap-1 ps-2 w-full">
@@ -59,7 +59,7 @@ const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
           <button onClick={addToCart} className="bg-black flex items-center justify-center -mb-4 w-full p-3 text-white font-poppins text-base rounded-bl-lg rounded-br-lg hover:bg-customred">
             Add to cart
           </button>
-        </Link>
+          </Link>
         </div>
       </section> 
     </>

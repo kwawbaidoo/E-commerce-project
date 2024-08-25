@@ -1,17 +1,25 @@
-import { json, Link, useNavigate } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import market from "../assets/images/marketpng.png";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+<<<<<<< HEAD
 import api from "../api";
+=======
+import { useLocation, useNavigate } from 'react-router-dom';
+
+// import api from "../api";
+>>>>>>> main
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
   
+  const from = location.state?.from || '/';
 
 
   const handleToggleClick = () => {
@@ -52,6 +60,8 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const userData = { email }; // Replace with actual user data from API
+    navigate(from, { replace: true });
     try {
       const response = await api.post("http://localhost:8000/api/login", {
         email,
