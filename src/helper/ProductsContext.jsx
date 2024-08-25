@@ -1,7 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-// Create the context
-const ProductsContext = createContext();
+// Create the context with a default value
+const ProductsContext = createContext({
+  products: [],
+  updateFilters: () => {}
+});
 
 // Create a provider component
 export const ProductsProvider = ({ children }) => {
@@ -15,9 +18,7 @@ export const ProductsProvider = ({ children }) => {
         let url = 'http://localhost:3020/products';
 
         if (category || subCategory) {
-          url += `?${category ? `category=${category}` : ''}${
-            subCategory ? `&subCategory=${subCategory}` : ''
-          }`;
+          url += `?${category ? `category=${category}` : ''}${category && subCategory ? '&' : ''}${subCategory ? `subCategory=${subCategory}` : ''}`;
         }
 
         const response = await fetch(url);

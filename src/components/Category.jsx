@@ -29,7 +29,7 @@ const Category = ({ isVisible }) => {
             onMouseEnter={() => setActiveCategory(category)}
             className="p-2 hover:text-customred cursor-pointer"
           >
-            <strong>{category}</strong>
+            <span>{category}</span>
           </li>
         ))}
       </ul>
@@ -41,7 +41,7 @@ const Category = ({ isVisible }) => {
               onClick={() => handleSubCategoryClick(activeCategory, subCategory)}
               className="p-2 hover:text-customred cursor-pointer"
             >
-              {subCategory}
+              <em>{subCategory}</em>
             </li>
           ))}
       </ul>

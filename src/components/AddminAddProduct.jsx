@@ -1,31 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const AdminAddProduct = () => {
-  const [categories] = useState(['Electronics', 'Books', 'Clothing']);
+  const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [formData, setFormData] = useState({
-    category: '',
-    subcategory: '',
+    category_id: '',
+    subcategory_id: '',
     name: '',
     description: '',
     quantity: 0,
     price: 0,
-    imagePath: ''
+    image: null,
   });
 
-  const handleCategoryChange = (e) => {
-    const selectedCategory = e.target.value;
-    setFormData({ ...formData, category: selectedCategory });
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/categories');
+        if (!response.ok) throw new Error('Failed to fetch categories');
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
 
-    // Example subcategories
-    if (selectedCategory === 'Electronics') {
-      setSubcategories(['Phones', 'Laptops', 'Cameras']);
-    } else if (selectedCategory === 'Books') {
-      setSubcategories(['Fiction', 'Non-Fiction', 'Comics']);
-    } else if (selectedCategory === 'Clothing') {
-      setSubcategories(['Men', 'Women', 'Kids']);
-    } else {
-      setSubcategories([]);
+    fetchCategories();
+  }, []);
+
+  const handleCategoryChange = async (e) => {
+    const selectedCategoryId = e.target.value;
+    setFormData({ ...formData, category_id: selectedCategoryId });
+
+    try {
+      const response = await fetch(`http://localhost:8000/api/subcategories?category_id=${selectedCategoryId}`);
+      if (!response.ok) throw new Error('Failed to fetch subcategories');
+      const data = await response.json();
+      setSubcategories(data);
+    } catch (error) {
+      console.error('Error fetching subcategories:', error);
     }
   };
 
@@ -34,10 +49,30 @@ const AdminAddProduct = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send data to backend)
-    console.log(formData);
+
+    const formDataToSend = new FormData();
+    Object.keys(formData).forEach(key => {
+      formDataToSend.append(key, formData[key]);
+    });
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/products', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('Product added:', response.data);
+      toast.success("Product added successfully.");
+    } catch (error) {
+      console.error('Error adding product:', error);
+      toast.error("Error adding product.");
+    }
   };
 
   return (
@@ -45,33 +80,33 @@ const AdminAddProduct = () => {
       <h1 className="text-2xl font-bold mb-6">Add New Product</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
+          <label htmlFor="category_id" className="block text-sm font-medium text-gray-700">Category</label>
           <select
-            id="category"
-            name="category"
+            id="category_id"
+            name="category_id"
             className="mt-1 block w-full border border-gray-300 bg-white rounded-md shadow-sm py-2 px-3"
-            value={formData.category}
+            value={formData.category_id}
             onChange={handleCategoryChange}
           >
             <option value="">Select Category</option>
-            {categories.map(category => (
-              <option key={category} value={category}>{category}</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>{category.name}</option>
             ))}
           </select>
         </div>
 
         <div>
-          <label htmlFor="subcategory" className="block text-sm font-medium text-gray-700">Subcategory</label>
+          <label htmlFor="subcategory_id" className="block text-sm font-medium text-gray-700">Subcategory</label>
           <select
-            id="subcategory"
-            name="subcategory"
+            id="subcategory_id"
+            name="subcategory_id"
             className="mt-1 block w-full border border-gray-300 bg-white rounded-md shadow-sm py-2 px-3"
-            value={formData.subcategory}
+            value={formData.subcategory_id}
             onChange={handleInputChange}
           >
             <option value="">Select Subcategory</option>
-            {subcategories.map(subcategory => (
-              <option key={subcategory} value={subcategory}>{subcategory}</option>
+            {subcategories.map((subcategory) => (
+              <option key={subcategory.id} value={subcategory.id}>{subcategory.name}</option>
             ))}
           </select>
         </div>
@@ -124,14 +159,13 @@ const AdminAddProduct = () => {
         </div>
 
         <div>
-          <label htmlFor="imagePath" className="block text-sm font-medium text-gray-700">Image Path</label>
+          <label htmlFor="image" className="block text-sm font-medium text-gray-700">Image</label>
           <input
-            type="text"
-            id="imagePath"
-            name="imagePath"
+            type="file"
+            id="image"
+            name="image"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"
-            value={formData.imagePath}
-            onChange={handleInputChange}
+            onChange={handleFileChange}
           />
         </div>
 
