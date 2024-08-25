@@ -23,36 +23,58 @@ import ProfileEdit from "./components/ProfileEdit";
 import ForgetPass from "./components/Forgetpass";
 import AllProductsPage from "./pages/AllProductsPage";
 import ProductDetails from "./pages/ProductDetails";
-function App() {
-  const location = useLocation();
+import CategoryProducts from "./pages/CategoryProducts";
+import { SearchProvider } from "./helper/SearchContext";
 
+function App() {
   return (
-    <CartProvider>
-      <ProductsProvider>
-        <div>
-          <ToastContainer />
-          {location.pathname !== "/dashboard" && <Navigation />}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/category" element={<Category />} />
-            <Route path="/profileEdit" element={<ProfileEdit />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/dashboard" element={<AdminDashboard />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/forgetpass" element={<ForgetPass />} />
-            <Route path="/productdetails/:id" element={<ProductDetails />} />
-          </Routes>
-          {/* <AdminAddProduct/> */}
-          {location.pathname !== "/dashboard" && <Footer />}
-        </div>
-      </ProductsProvider>
-    </CartProvider>
+    
+      <CartProvider>
+        <SearchProvider>
+          <ProductsProvider>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                minHeight: "100vh",
+              }}
+            >
+              <ToastContainer />
+              <Navigation />
+              <div style={{ flex: 1 }}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/profileEdit" element={<ProfileEdit />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route
+                    path="/checkout"
+                    element={
+                      
+                        <Checkout />
+                     
+                    }
+                  />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/forgetpass" element={<ForgetPass />} />
+                  <Route
+                    path="/productdetails/:id"
+                    element={<ProductDetails />}
+                  />
+                  <Route
+                    path="/products/:category/:subCategory"
+                    element={<CategoryProducts />}
+                  />
+                </Routes>
+              </div>
+              <Footer />
+            </div>
+          </ProductsProvider>
+        </SearchProvider>
+      </CartProvider>
   );
 }
 

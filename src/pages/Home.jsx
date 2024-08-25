@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Hero from "../components/Hero";
 import ItemCard from "./ItemCard";
-import Cart from "../components/Cart";
 import { useProduct } from "../helper/ProductsContext";
 import { useCart } from "../helper/CartContext";
+import { useSearch } from "../helper/SearchContext";
 
 const Home = () => {
   const { cart, setCart } = useCart();
-  const [userInitials, setUserInitials] = useState("");
-  const { products, setProducts } = useProduct([]);
+  const { products } = useProduct();
+  const { searchQuery } = useSearch();
 
-  useEffect(() => {
-    fetchProducts();
-  }, []); // Fetch products only once on component mount
+  // Filter products based on the search query
+  const filteredProducts = products?.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  function fetchProducts() {
-    fetch("http://localhost:3020/products")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Fetched products:", data); // Log the fetched data
-        setProducts(data);
-      })
-      .catch((err) => {
-        console.error("Error fetching products:", err);
-      });
-  }
-
-  useEffect(() => {
-    console.log("Updated products state:", products); // This will log the updated products state
-  }, [products]); // This useEffect will run every time `products` is updated
-
+  // Function to handle adding a product to the cart
   function addToCart(product) {
     const existingItem = cart.find((cartItem) => cartItem.id === product.id);
     if (existingItem) {
@@ -45,60 +31,24 @@ const Home = () => {
     }
   }
 
-  useEffect(() => {
-    fetchProducts();
-  }, [cart]);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    const profileImage = document.getElementById("profileImage");
-    const signUp = document.getElementById("signUp");
-    let userInitials = document.getElementById("userInitials");
-
-    if (storedUser) {
-      profileImage.style.display = "flex";
-      signUp.style.display = "none";
-      const initials = getUserInitials(storedUser);
-      userInitials.innerText= initials;
-    }
-  }, []);
-
-  function getUserInitials(fullName) {
-    console.log(fullName);
-    if (!fullName) {
-      return "";
-    }
-    const nameParts = fullName.split(" ");
-    console.log(nameParts);
-
-    const initials = nameParts
-      .map((word) => word.charAt(0).toUpperCase())
-      .join("");
-
-    return initials;
-  }
-
   return (
-    <div className="">
-      <div className="relative border bg-black">
-        {/* <LoadingOverlay /> */}
-      </div>
+    <div>
       <Hero />
-
       <div className="mt-72 flex gap-5 flex-wrap align-items-center justify-center">
-        {products?.length > 0 ? (
-          products?.map((product, key) => (
-            <ItemCard 
-              key={key} 
-              name={product.name} 
-              price={product.price} 
-              imageUrl={product.imageUrl} 
+        {filteredProducts?.length > 0 ? (
+          filteredProducts.map((product) => (
+            <ItemCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              imageUrl={product.imageUrl}
               brand={product.brand}
               addToCart={() => addToCart(product)}
             />
           ))
         ) : (
-          <p>No products available.</p> 
+          <p>No products available.</p>
         )}
       </div>
     </div>

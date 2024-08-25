@@ -8,7 +8,6 @@ import { IconShoppingBag } from "@tabler/icons-react";
 import { IconUsersGroup } from "@tabler/icons-react";
 import Table from "../dashboard/Table";
 import { useState, useEffect } from "react";
-// import BestSellers from '../dashboard/BestSellers';
 
 const Dashboard = () => {
   const columns = [
@@ -62,7 +61,7 @@ const Dashboard = () => {
     fetchProducts();
   }, [orders]);
   return (
-    <div className="flex  flex-col md:flex-row h-screen border bg-gray-100">
+    <div className="flex flex-col md:flex-row h-screen border bg-gray-100">
       <main className="w-full md:w-10/12 p-4">
         <Header />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">

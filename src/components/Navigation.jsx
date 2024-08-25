@@ -1,81 +1,109 @@
-import heart from "../assets/images/heart.png";
-import cart from "../assets/images/Cart1.png";
-import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../helper/CartContext";
 import Top from "./Top";
-import Home from "../pages/Home";
-import { useCart } from "../helper/CartContext";
-import { useState, useEffect } from "react";
-import { UserContext } from "./UserContext";
-import shopEasy from '../assets/images/ShopEasy.png';
-import AccountDropDown from '../components/AccountDropDown';
-import { useCart } from "../helper/CartContext";
+import shopEasy from "../assets/images/ShopEasy.png";
+import AccountDropDown from "../components/AccountDropDown";
+import Category from "./Category";
+import { useSearch } from "../helper/SearchContext";
 
 const Navigation = () => {
-  const [categories, setCategories] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { searchQuery, setSearchQuery } = useSearch();
   const { cart } = useCart();
+  const navigate = useNavigate();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const handleSearch = () => {
+    navigate("/"); // Navigate to the home page or search results page
+  };
+
   return (
     <div className="fixed z-50 top-0 left-0 right-0 bg-customgray">
       <Top />
-      <div className="w-full flex flex-col items-center justify-center p-8 ">
-        <div className="flex md:max-w-[1170px] xl:max-w-[1170px] gap-36 items-center ">
-          <span className="flex gap-48 w-full xl:max-w-[675px] ">
-            {/* <Link to="/" className="font-inter font-semibold text-2xl text-customred  border w-full flex items-center justify-center bg-white shadow-md rounded-lg"><img className="w-full" src={shopEasy} alt="" /></Link> */}
+      <div className="w-full flex flex-col items-center justify-center p-8 px-64">
+        <div className="flex w-full">
+          <span className="flex justify-between w-full">
             <img className="w-40 shadow-lg" src={shopEasy} alt="" />
-            <ul className="flex gap-12 font-poppins text-base items-center  w-full">
+            <ul className="flex gap-10 font-poppins text-base items-center justify-center w-full">
+              <li
+                onMouseEnter={() => setModalVisible(true)}
+                onMouseLeave={() => setModalVisible(false)}
+                className="position-relative"
+              >
+                <Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 7h18M3 12h18M3 17h18"
+                      stroke="#DB4444"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    ></path>
+                  </svg>
+                </Link>
+                <Category isVisible={isModalVisible} />
+              </li>
               <li>
                 <Link to="/" className="hover:underline">
                   Home
                 </Link>
               </li>
-              <li>
-                <Link to="/contact" className="hover:underline">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:underline">
-                  About
-                </Link>
-              </li>
               <li id="signUp" className="w-20">
-                <Link to="/signup" className="hover:underline  ">
+                <Link to="/signup" className="hover:underline">
                   Sign Up
                 </Link>
               </li>
             </ul>
           </span>
 
-          <div className="flex justify-between w-[347px] ">
-            <span className="flex w-52 gap-3 justify-center bg-customgray  items-center ">
-              <input
-                className=" w-40 m-1 border py-1 outline-none bg-customgray text-xs font-poppins rounded-md p-2"
-                type="text"
-                placeholder="Search"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-4 mr-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          <div className="flex justify-between w-full">
+            <span className="flex w-full justify-center bg-customgray items-center">
+              <span className="border w-96 shadow-lg rounded-md flex items-center gap">
+                <span className="w-10 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </span>
+
+                <input
+                  className="w-72 py-2 m-1 ps-3 outline-none bg-customgray text-sm font-poppins rounded-md"
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
-              </svg>
+              </span>
+              <span
+                onClick={handleSearch}
+                className="py-3 px-4 cursor-pointer rounded-md bg-customred text-white shadow-md border"
+              >
+                Search
+              </span>
             </span>
 
-            <div className="flex gap-6 items-center ml-5 border ">
-              <a className=" p-1 rounded-sm" href="">
+            <div className="flex gap-6 items-center ml-5">
+              <a className="p-1 rounded-sm" href="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -91,7 +119,7 @@ const Navigation = () => {
                   />
                 </svg>
               </a>
-              <Link to="/cart" className="flex  relative">
+              <Link to="/cart" className="flex relative">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
