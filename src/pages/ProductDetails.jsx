@@ -2,10 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useProduct } from '../helper/ProductsContext'; // Adjust path as needed
 import { useState, useEffect } from 'react';
 import { useCart } from "../helper/CartContext";
+import { useNavigate } from 'react-router-dom';
 
 
 const ProductDetails = () => {
   const { cart, setCart } = useCart();
+  // const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { id } = useParams();
   console.log('Product ID from URL:', id);
   const { products } = useProduct();
@@ -17,7 +20,7 @@ console.log('Products:', products);
   useEffect(() => {
     if (Array.isArray(products) && products.length > 0) {
       console.log('Is products an array:', Array.isArray(products))
-      const fetchedProduct = products.find(product => product.id === id); // Adjust id type as needed
+      const fetchedProduct = products.find(product => product.id === id); 
       console.log('Fetched Product:', fetchedProduct);
       setProduct(fetchedProduct);
     }
@@ -26,10 +29,14 @@ console.log('Products:', products);
 
 
   if (!product) {
-    return <div>Loading...</div>; // Or "Product not found" based on your preference
+    return <div>Loading...</div>; 
   }
 
   function addToCart(product) {
+    // if (!user) {
+    //   navigate('/login', { state: { from: `/products/${product.id}` } });
+    //   return;
+    // }
     const existingItem = cart.find((cartItem) => cartItem.id === product.id);
     if (existingItem) {
       setCart(
@@ -58,13 +65,16 @@ console.log('Products:', products);
             <h2 className="text-2xl font-bold mb-2">{product.brand}</h2>
             <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
 
-            <p className="text-gray-700 mb-4">{product.description}</p>
+            <p className="text-gray-700 mb-4 font">{product.description}</p>
             <div className="flex justify-between items-center">
               <span className="text-xl font-semibold text-red-500">
                 GH&#8373; {product.price}
               </span>
+              <span className="text-xl font-semibold text-red-500">
+                GH&#8373; {product.price}
+              </span>
               <button
-                onClick={() => addToCart()}
+                onClick={() => addToCart(product)}
                 className="bg-black text-white px-4 py-2 rounded hover:bg-red-600"
               >
                 Add to Cart
