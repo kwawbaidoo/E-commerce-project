@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../helper/CartContext";
+<<<<<<< HEAD
+import { useState, useEffect } from "react";
+import { UserContext } from "./UserContext";
+import shopEasy from '../assets/images/ShopEasy.png';
+import AccountDropDown from '../components/AccountDropDown';
+
+const Navigation = () => {
+  const [categories, setCategories] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cart } = useCart();
+=======
 import Top from "./Top";
 import shopEasy from "../assets/images/ShopEasy.png";
 import AccountDropDown from "../components/AccountDropDown";
@@ -14,6 +25,7 @@ const Navigation = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
+>>>>>>> main
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);

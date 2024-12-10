@@ -1,62 +1,53 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../helper/CartContext";
-import ItemCard from "./ItemCard";
+import AllProductsCard from "./AllProductCard";
 
 const AllProductsPage = () => {
-  const [ Products, setProducts ] = useState([]);
-    console.log("hello"  + Products);
+  const [Products, setProducts] = useState([]);
   const { cart, setCart } = useCart();
 
-
   useEffect(() => {
-    fetchProducts();
-  }, [Products]); 
-
-  function fetchProducts() {
-    fetch("http://localhost:3020/products")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Fetched products:", data); // Log the fetched data
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/products");
+        if (!response.ok) throw new Error("Failed to fetch products");
+        const data = await response.json();
         setProducts(data);
-      })
-      .catch((err) => {
-        console.error("Error fetching products:", err);
-      });
-  }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
 
+    fetchProducts();
+  }, []);
 
-  function addToCart(product) {
-    const existingItem = cart.find((cartItem) => cartItem.id === product.id);
-    if (existingItem) {
-      setCart(
-        cart.map((cartItem) =>
-          cartItem.id === product.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-  }
 
   return (
-    <div className="flex flex-wrap justify-center gap-5">
-        {Products?.length > 0 ? (
-          Products?.map((product, key) => (
-            <ItemCard 
-              key={key} 
-              name={product.name} 
-              price={product.price} 
-              imageUrl={product.imageUrl} 
-              brand={product.brand}
-              addToCart={() => addToCart(product)}
-            />
-          ))
-        ) : (
-          <p>No products available.</p> // Fallback message if products array is empty
-        )}
-        
+    <div
+      className="flex flex-wrap scrollbar-hide h-screen overflow-y-auto justify-center gap-5"
+      style={{
+        scrollbarWidth: "none" /* Firefox */,
+        msOverflowStyle: "none" /* IE and Edge */,
+      }}
+    >
+      {Products?.length > 0 ? (
+        Products?.map((product) => (
+          <AllProductsCard
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            image={`http://localhost:8000/storage/${product.image}`}
+            brand={product.brand}
+          />
+        ))
+      ) : (
+        <p>No products available.</p>
+      )}
+      <style jsx>{`
+        .relative::-webkit-scrollbar {
+          display: none; /* Chrome, Safari */
+        }
+      `}</style>
     </div>
   );
 };

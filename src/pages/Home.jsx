@@ -7,8 +7,31 @@ import { useSearch } from "../helper/SearchContext";
 
 const Home = () => {
   const { cart, setCart } = useCart();
-  const { products } = useProduct();
+  const [userInitials, setUserInitials] = useState("");
+  const { products, setProducts } = useProduct([]);
   const { searchQuery } = useSearch();
+
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/products');
+        if (!response.ok) throw new Error('Failed to fetch products');
+        const data = await response.json();
+        setProducts(data);
+        console.log(data);
+
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+
+  useEffect(() => {
+  }, [products]); // This useEffect will run every time `products` is updated
 
   // Filter products based on the search query
   const filteredProducts = products?.filter((product) =>
@@ -31,6 +54,52 @@ const Home = () => {
     }
   }
 
+// Function to submit cart items to the backend
+async function submitCart() {
+  const token = localStorage.getItem('token');
+  
+  try {
+    const response = await axios.post(
+      'http://localhost:8000/api/cart', 
+      { items: cart },
+      { headers: { Authorization: `Bearer ${token}` } } // Include token in headers
+    );
+
+    console.log('Cart submitted successfully:', response.data);
+    // Optionally, handle the response or clear the cart
+    setCart([]);
+  } catch (error) {
+    console.error('Error submitting cart:', error);
+    // Handle the error as needed
+  }}
+
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const profileImage = document.getElementById("profileImage");
+    const signUp = document.getElementById("signUp");
+    let userInitials = document.getElementById("userInitials");
+
+    if (storedUser) {
+      profileImage.style.display = "flex";
+      signUp.style.display = "none";
+      const initials = getUserInitials(storedUser);
+      userInitials.innerText= initials;
+    }
+  }, []);
+
+  function getUserInitials(fullName) {
+    if (!fullName) {
+      return "";
+    }
+    const nameParts = fullName.split(" ");
+    const initials = nameParts
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    return initials;
+  }
+
   return (
     <div>
       <Hero />
@@ -42,7 +111,7 @@ const Home = () => {
               id={product.id}
               name={product.name}
               price={product.price}
-              imageUrl={product.imageUrl}
+              image={`http://localhost:8000/storage/${product.image}`}
               brand={product.brand}
               addToCart={() => addToCart(product)}
             />

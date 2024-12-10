@@ -31,7 +31,7 @@ const AccountDropDown = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-transparent bg-opacity-50 flex justify-center items-center z-50 modal-overlay">
-      <div  className="bg-customgray  rounded-lg shadow-lg p-6 w-52 -top-[73px] left-[460px] relative">
+      <div  className="bg-customgray  rounded-lg shadow-lg p-6 w-52 -top-[150px] left-[480px] relative">
         <button onClick={onClose} className="absolute top-0 right-0 mt-4 mr-4 text-gray-500  modal-overlay">
           &#x2715;
         </button>

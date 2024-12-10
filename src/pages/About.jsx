@@ -61,12 +61,10 @@ const About = () => {
   }, []);
 
   function getUserInitials(fullName) {
-    console.log(fullName);
     if (!fullName) {
       return "";
     }
     const nameParts = fullName.split(" ");
-    console.log(nameParts);
 
     const initials = nameParts
       .map((word) => word.charAt(0).toUpperCase())
@@ -208,7 +206,6 @@ const About = () => {
                     <h3 className="font-poppins font-normal text-sm">We reurn money within 30 days</h3>
                 </div>
             </div>
-            <AllProductsPage/>
         </div>
       </section>
     </div>

@@ -3,9 +3,13 @@ import market from "../assets/images/marketpng.png";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+<<<<<<< HEAD
+import api from "../api";
+=======
 import { useLocation, useNavigate } from 'react-router-dom';
 
 // import api from "../api";
+>>>>>>> main
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState("password");
@@ -63,10 +67,13 @@ const Login = () => {
         email,
         password: passwordInput,
       });
-      
+      console.log(response); // Add this line
+
+  
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", user.name);
+      // localStorage.setItem("tokenable_id",tokenable_id);
       const userRole = user.role; // Assume the role is returned from the backend
   
       if (userRole === "admin") {
@@ -79,11 +86,16 @@ const Login = () => {
   
       toast.success("Login successful");
     } catch (error) {
-      toast.error("Invalid email, password, or unauthorized role");
+      if (error.response && error.response.status === 401) {
+        toast.error("Unauthorized access. Please check your credentials.");
+      } else if (error.response && error.response.status === 400) {
+        toast.error("Validation error. Please check your input.");
+      } else {
+        toast.error("Invalid email, password, or unauthorized role");
+      }
     }
-  
-   
   };
+  
   
   return (
     <div className=" flex items-center justify-center mt-48">

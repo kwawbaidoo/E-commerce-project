@@ -3,21 +3,22 @@ import React, {useState, useEffect } from "react";
 const RecentOrders = () => {
   const [orders, setOrders] = useState([]);
 
-  function fetchProducts() {
-    fetch("http://localhost:3020/orders")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setOrders(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  async function fetchOrders() {
+    try {
+      const response = await fetch("http://localhost:8000/api/orders");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setOrders(data); // Assuming `setOrders` is a state setter function for storing orders
+    } catch (err) {
+      console.error('Error fetching orders:', err);
+    }
   }
 
   useEffect(() => {
-    fetchProducts();
-  }, [orders]);
+    fetchOrders();
+  }, []);
   return (
     <div className="bg-white p-4 shadow rounded my-4">
       <h3 className="p-3 border ">Recent Orders</h3>
@@ -35,12 +36,12 @@ const RecentOrders = () => {
         <tbody className="">
           {orders?.map((order, key) => (
             <tr key={key} className="border text-center hover:bg-slate-400">
-              <td className="mt-2">{order.orderID}</td>
-              <td className="mt-2">{order.productName}</td>
-              <td className="mt-2">{order.date}</td>
-              <td className="mt-2">{order.customerName}</td>
+              <td className="mt-2">{order.id}</td>
+              <td className="mt-2">{order.product_name}</td>
+              <td className="mt-2">{order.created_at}</td>
+              <td className="mt-2">{order.user_name}</td>
               <td className="mt-2">{order.status}</td>
-              <td className="mt-2">GHS {order.amount}</td>
+              <td className="mt-2">GHS {order.total_amount}</td>
             </tr>
           ))}
 

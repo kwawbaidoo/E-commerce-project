@@ -1,12 +1,13 @@
 import Headphone from '../assets/images/ideapad.png'
 import { Link } from 'react-router-dom';
+import AllProductsPage from './AllProductsPage';
 
-const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
+const AllProductsCard = ({id, image,name,price,  brand, description}) => {
   return (
     <>
       <section className="flex p-3 justify-center items-center mt-4">
       <div className=' w-[250px] h-[300px]'>
-        <Link className=" flex h-[300px] w-[250px] justify-between flex-col hover:shadow-md hover:bg-slate-50 bg-customgray cursor-pointer rounded-md">
+        <Link className=" flex h-[300px] w-[250px] justify-center items-center flex-col hover:shadow-md hover:bg-slate-50 bg-customgray cursor-pointer rounded-md">
           <div className="flex relative align-content-center justify-center   w-full">
             <img
               className="w-[150px] h-[150px] -ml-5 mt-10 p-5"
@@ -14,7 +15,7 @@ const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
               alt={name}
             />
             <span className=" flex flex-col gap-2">
-              <Link to={`/productdetails/${id}`} className="w-8 h-8 absolute right-3 top-3 rounded-full bg-white flex items-center justify-center">
+              <span className="w-8 h-8 absolute right-3 top-3 rounded-full bg-white flex items-center justify-center">
                 {/* <img className="" src={view} alt="" /> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,11 +40,11 @@ const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
                     strokeLinejoin="round"
                   ></path>
                 </svg>
-              </Link>
+              </span>
             </span>
           </div>
-          <div className="flex flex-col gap-1 ps-2 w-full">
-            <p className="font-poppins font-medium w-full max-w-50 text-xs">
+          <div className="flex flex-col items-center justify-center gap-1 ps-2 w-full">
+            <p className="font-poppins text-center font-medium w-full max-w-50 text-sm">
               {name}
             </p>
             
@@ -51,19 +52,13 @@ const ItemCard = ({id, image,name,price, addToCart, brand, description}) => {
               <span className="font-poppins font-medium text-base text-customred">
                 GH&#8373; {price}
               </span>
-              <span className="line-through font-poppins font-medium text-base text-textgray">
-                GH&#8373; {price}
-              </span>
             </div>
           </div>
-          <button onClick={addToCart} className="bg-black flex items-center justify-center -mb-4 w-full p-3 text-white font-poppins text-base rounded-bl-lg rounded-br-lg hover:bg-customred">
-            Add to cart
-          </button>
-          </Link>
+        </Link>
         </div>
       </section> 
     </>
   );
 };
 
-export default ItemCard;
+export default AllProductsCard;

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ForgetPass = () => {
   // State variables
@@ -10,6 +12,8 @@ const ForgetPass = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   // Function to handle email verification
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +22,7 @@ const ForgetPass = () => {
     setMessage('');
 
     try {
-      // Replace '/api/verify-email' with your actual API endpoint
-      const response = await fetch('/api/verify-email', {
+      const response = await fetch('http://localhost:8000/api/verify-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,17 +34,19 @@ const ForgetPass = () => {
         const data = await response.json();
         if (data.isValid) {
           setMessage('Email verified. Please enter your new password.');
+          toast.success('Email verified. Please enter your new password.');
           setStep(2);
         } else {
+          toast.error('Email address not found.');
           setError('Email address not found.');
         }
       } else {
-        // Handle non-OK HTTP responses
         setError('Failed to verify email. Please try again later.');
+        toast.error('Failed to verify email. Please try again later.');
       }
     } catch (err) {
-      // Handle network or unexpected errors
       setError('An error occurred. Please try again later.');
+      toast.error('An error occurred. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -61,28 +66,35 @@ const ForgetPass = () => {
     setLoading(true);
 
     try {
-      // Replace '/api/reset-password' with your actual API endpoint
-      const response = await fetch('/api/reset-password', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8000/api/resetPassword', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, newPassword }),
+        body: JSON.stringify({
+          email: email, // Sending the verified email
+          newPassword: newPassword,
+          newPassword_confirmation: confirmPassword
+        }),
       });
 
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
           setMessage('Your password has been reset successfully.');
+          toast.success('Your password has been reset successfully.');
           setStep(3);
         } else {
           setError(data.message || 'Password reset failed.');
+          toast.error(data.message || 'Password reset failed.');
         }
       } else {
         setError('Failed to reset password. Please try again later.');
+        toast.error('Failed to reset password. Please try again later.');
       }
     } catch (err) {
       setError('An error occurred. Please try again later.');
+      toast.error('An error occurred. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -91,14 +103,12 @@ const ForgetPass = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-md rounded-lg">
-        {/* Heading */}
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           {step === 1 && 'Forgot Password'}
           {step === 2 && 'Reset Password'}
           {step === 3 && 'Success'}
         </h2>
 
-        {/* Step 1: Email Verification */}
         {step === 1 && (
           <form onSubmit={handleEmailSubmit}>
             <div className="mb-4">
@@ -119,17 +129,14 @@ const ForgetPass = () => {
               />
             </div>
 
-            {/* Display Error Message */}
             {error && (
               <p className="text-red-600 text-sm mb-4">{error}</p>
             )}
 
-            {/* Display Success Message */}
             {message && (
               <p className="text-green-600 text-sm mb-4">{message}</p>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               className={`w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
@@ -142,7 +149,6 @@ const ForgetPass = () => {
           </form>
         )}
 
-        {/* Step 2: Password Reset */}
         {step === 2 && (
           <form onSubmit={handlePasswordSubmit}>
             <div className="mb-4">
@@ -180,17 +186,14 @@ const ForgetPass = () => {
               />
             </div>
 
-            {/* Display Error Message */}
             {error && (
               <p className="text-red-600 text-sm mb-4">{error}</p>
             )}
 
-            {/* Display Success Message */}
             {message && (
               <p className="text-green-600 text-sm mb-4">{message}</p>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               className={`w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 ${
@@ -203,14 +206,13 @@ const ForgetPass = () => {
           </form>
         )}
 
-        {/* Step 3: Success Message */}
         {step === 3 && (
           <div>
             <p className="text-green-600 text-sm mb-4">
               Your password has been reset successfully.
             </p>
             <button
-              onClick={() => setStep(1)}
+              onClick={() => navigate('/login')}
               className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Go Back to Login

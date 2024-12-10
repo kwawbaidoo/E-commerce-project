@@ -1,11 +1,14 @@
 import React from "react";
-import shopeasy from "../assets/images/ShopEasy.png"
+import shopeasy from "../assets/images/ShopEasy.png";
 
 const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
   return (
-    <aside className="w-full h-screen md:w-72 shadow-md bg-white p-4">
-            <div className="flex items-center mb-8  justify-center" ><img className="w-40 shadow-lg" src={shopeasy} alt="" /></div>
-            <nav className="flex flex-col justify-between h-full p-4">
+    <>
+    <aside className="w-full h-full md:w-72 shadow-md bg-white p-4">
+      <div className="flex items-center mb-8  justify-center">
+        <img className="w-40 shadow-lg" src={shopeasy} alt="" />
+      </div>
+      <nav className="flex flex-col justify-between h-screen p-4">
         <ul className="flex flex-col gap-8">
           <li>
             <button
@@ -24,7 +27,9 @@ const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
                   viewBox="0 0 24 24"
                   fill="none"
                   className={`transition-colors duration-300 ${
-                    activeContent === "dashboard" ? "text-white" : "text-gray-400"
+                    activeContent === "dashboard"
+                      ? "text-white"
+                      : "text-gray-400"
                   }`}
                 >
                   <path
@@ -36,7 +41,7 @@ const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
                   ></path>
                 </svg>
               </span>
-              <span className="" >Dashboard</span>
+              <span className="">Dashboard</span>
             </button>
           </li>
           <li>
@@ -55,7 +60,9 @@ const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 className={`transition-colors duration-300 ${
-                  activeContent === "allproducts" ? "text-white" : "text-gray-400"
+                  activeContent === "allproducts"
+                    ? "text-white"
+                    : "text-gray-400"
                 }`}
               >
                 <path
@@ -73,7 +80,7 @@ const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
                   strokeLinejoin="round"
                 ></path>
               </svg>
-              <span className="" >All Products</span>
+              <span className="">All Products</span>
             </button>
           </li>
           <li
@@ -104,11 +111,11 @@ const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
                 ></path>
               </svg>
             </span>
-            <span className="" >Order List</span>
+            <span className="">Order List</span>
           </li>
         </ul>
         <div>
-          <div className="flex gap-3 items-center justify-center">
+          <div className="flex border gap-3 items-center">
             <div className="bg-gray-600 text-white text-2xl rounded-full w-12 h-12 flex items-center justify-center">
               {userInitials}
             </div>
@@ -121,6 +128,7 @@ const Sidebar = ({ activeContent, onSidebarClick, userInitials, userName }) => {
         </div>
       </nav>
     </aside>
+    </>
   );
 };
 
